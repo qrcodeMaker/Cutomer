@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amana Travel — Umrah Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#f7f3ee;--cream:#ede8df;--ink:#1a1612;--brown:#5c4a35;
+  --gold:#c9991a;--gold-light:#f0d080;--gold-pale:#fdf5dc;
+  --green:#2d6a4f;--green-l:#52b788;--red:#9b2226;
+  --muted:#8a7a6a;--border:#ddd5c8;--white:#fff;
+  --r:6px;--shadow:0 4px 24px rgba(26,22,18,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--sand);font-family:DM Sans,sans-serif;color:var(--ink);min-height:100vh}
+
+/* ── HEADER ── */
+.hdr{background:var(--ink);color:var(--sand);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:62px;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:.7rem}
+.logo-icon{width:30px;height:30px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.logo-txt{font-family:Playfair Display,serif;font-size:1rem}
+.logo-sub{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light);margin-top:1px}
+.rate-pill{background:rgba(201,153,26,.2);border:1px solid rgba(201,153,26,.4);color:var(--gold-light);padding:.2rem .6rem;border-radius:3px;font-size:.65rem;font-weight:600;cursor:pointer}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#2d2419 60%,#3d3020 100%);padding:2rem 2rem 1.8rem;color:var(--sand);position:relative;overflow:hidden}
+.hero::before{content:'☪';position:absolute;right:2rem;top:50%;transform:translateY(-50%);font-size:8rem;opacity:.04}
+.hero-eye{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.hero h1{font-family:Playfair Display,serif;font-size:2rem;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.hero h1 em{color:var(--gold-light);font-style:italic}
+.hero-sub{font-size:.8rem;color:rgba(247,243,238,.5);margin-top:.3rem}
+
+/* ── LAYOUT ── */
+.wrap{display:grid;grid-template-columns:400px 1fr;min-height:calc(100vh - 62px - 130px)}
+
+/* ── LEFT PANEL ── */
+.left{background:var(--white);border-right:1px solid var(--border);padding:1.5rem;display:flex;flex-direction:column;gap:1.2rem}
+.card{border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.card-hdr{background:var(--cream);padding:.55rem 1rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.card-body{padding:.9rem 1rem;display:flex;flex-direction:column;gap:.65rem}
+
+/* inputs */
+label{font-size:.68rem;color:var(--muted);font-weight:500;display:block;margin-bottom:.22rem}
+label span{color:var(--gold);font-size:.58rem;margin-left:.25rem}
+input[type=number],input[type=text],select,textarea{width:100%;padding:.5rem .65rem;border:1.5px solid var(--border);border-radius:4px;font-family:DM Sans,sans-serif;font-size:.8rem;color:var(--ink);background:var(--white);transition:border-color .15s;appearance:none}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,153,26,.1)}
+textarea{resize:vertical;min-height:84px;line-height:1.45}
+input.ro{background:var(--cream);color:var(--muted)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem}
+
+/* margin slider */
+.sl-row{display:flex;align-items:center;gap:.65rem}
+input[type=range]{flex:1;-webkit-appearance:none;height:4px;background:var(--border);border-radius:2px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.sl-val{font-size:.82rem;font-weight:600;color:var(--green);min-width:36px;text-align:right}
+
+/* ── ROOM GROUPS SECTION ── */
+.group-list{display:flex;flex-direction:column;gap:.6rem}
+.grp-row{display:grid;grid-template-columns:auto 80px 70px 36px;align-items:center;gap:.4rem;padding:.5rem .7rem;background:var(--sand);border:1.5px solid var(--border);border-radius:4px}
+.grp-type{font-size:.78rem;font-weight:600;color:var(--ink)}
+.grp-pax{font-size:.7rem;color:var(--muted)}
+.grp-price{font-size:.78rem;font-weight:600;color:var(--green)}
+.del-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;line-height:1;padding:0 4px;border-radius:3px;transition:color .15s}
+.del-btn:hover{color:var(--red)}
+.add-row{display:grid;grid-template-columns:1fr 80px 36px;gap:.4rem}
+.add-btn{background:var(--ink);color:var(--sand);border:none;border-radius:4px;padding:.45rem .5rem;font-size:.72rem;font-weight:600;cursor:pointer;letter-spacing:.04em;transition:background .15s}
+.add-btn:hover{background:var(--brown)}
+
+/* action button */
+.calc-btn{background:var(--gold);color:var(--ink);border:none;border-radius:var(--r);padding:.8rem;font-family:DM Sans,sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;width:100%;transition:all .15s}
+.calc-btn:hover{background:#b8880f;transform:translateY(-1px)}
+
+/* ── RIGHT PANEL ── */
+.right{padding:1.8rem 2rem;display:flex;flex-direction:column;gap:1.4rem}
+
+/* hero result strip */
+.res-hero{background:var(--ink);border-radius:10px;padding:1.6rem;color:var(--sand);display:flex;gap:1.5rem;position:relative;overflow:hidden;flex-wrap:wrap}
+.res-hero::after{content:'';position:absolute;top:0;right:0;width:180px;height:100%;background:radial-gradient(ellipse at right,rgba(201,153,26,.12),transparent 70%)}
+.rstat{}
+.rstat-lbl{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,243,238,.4);margin-bottom:.35rem}
+.rstat-val{font-family:Playfair Display,serif;font-size:1.7rem;font-weight:700;letter-spacing:-.02em;line-height:1}
+.rstat-note{font-size:.62rem;color:rgba(247,243,238,.35);margin-top:.25rem}
+.gold-c{color:var(--gold-light)}.green-c{color:#74c69d}.blue-c{color:#7ec8f0}
+
+/* group summary table */
+.tbl-wrap{background:var(--white);border:1px solid var(--border);border-radius:var(--r);}
+.tbl-hdr{background:var(--cream);padding:.6rem 1.1rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+th{font-size:.57rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-align:right;padding:.5rem .8rem;border-bottom:1.5px solid var(--ink)}
+th:first-child{text-align:left}
+td{padding:.55rem .8rem;text-align:right;border-bottom:1px solid rgba(221,213,200,.4);font-variant-numeric:tabular-nums}
+td:first-child{text-align:left;color:var(--muted);font-size:.7rem}
+tr.total-row td{border-top:1.5px solid var(--ink);border-bottom:none;font-weight:700;color:var(--ink)}
+tr.sale-row td{color:var(--green);font-weight:700}
+tr.profit-row td{color:var(--gold);font-weight:700}
+.gc{color:var(--green)}.rc{color:var(--red)}.goldc{color:var(--gold)}
+
+/* cost breakdown per type */
+.breakdown-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.bk-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.bk-card-hdr{padding:.6rem 1rem;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);font-weight:600}
+.bk-card-body{padding:.9rem 1rem}
+.bk-row{display:flex;justify-content:space-between;align-items:center;padding:.38rem 0;border-bottom:1px solid rgba(221,213,200,.4);font-size:.78rem}
+.bk-row:last-child{border-bottom:none}
+.bk-label{color:var(--muted)}
+.bk-val{font-weight:500}
+.bk-row.subtot{border-top:1px dashed var(--border);padding-top:.5rem;font-weight:600;color:var(--brown)}
+.bk-row.tot{border-top:2px solid var(--ink);padding-top:.65rem;font-weight:700;font-size:.85rem}
+.bk-row.sale{color:var(--green);font-weight:700}
+.bk-row.profit{color:var(--gold);font-weight:700}
+
+/* action bar */
+.action-bar{display:flex;gap:.75rem;flex-wrap:wrap}
+.act-btn{display:flex;align-items:center;gap:.4rem;border:1.5px solid var(--border);border-radius:var(--r);padding:.5rem 1rem;font-family:DM Sans,sans-serif;font-size:.72rem;color:var(--muted);cursor:pointer;background:var(--white);transition:all .15s}
+.act-btn:hover{border-color:var(--gold);color:var(--gold)}
+.act-btn.primary{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:600}
+.act-btn.primary:hover{background:#b8880f}
+
+/* empty */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;color:var(--muted);gap:.6rem;text-align:center}
+.empty-icon{font-size:2.8rem;opacity:.25}
+
+/* modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,22,18,.55);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border-radius:10px;padding:1.4rem;width:300px;box-shadow:var(--shadow)}
+.modal h3{font-family:Playfair Display,serif;margin-bottom:.9rem;font-size:1.1rem}
+.modal-close{float:right;background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--muted)}
+.modal-fld{margin-bottom:.65rem}
+.modal-fld label{font-size:.7rem;color:var(--muted);margin-bottom:.25rem;display:block}
+.modal-btn{background:var(--ink);color:var(--sand);border:none;border-radius:4px;padding:.6rem 1.1rem;font-family:DM Sans,sans-serif;font-size:.8rem;cursor:pointer;width:100%;margin-top:.5rem}
+
+@page {
+  margin: 0.8cm;
+  /* Some browsers support these to hide URL/date headers */
+}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}.left{border-right:none;border-bottom:1px solid var(--border)}}
+
+/* ── OVERLAY CONTENT STYLES ── */
+.conf-hdr{background:#1a1612;color:#fff;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.conf-badge{background:#9b2226;color:#fff;font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:4px 10px;border-radius:3px;font-weight:600}
+#offerContent table,#costContent table{width:100%;border-collapse:collapse}
+#offerContent th,#costContent th{background:#f0e9de;padding:8px 12px;text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#5c4a35;font-weight:600;border-bottom:2px solid #c9991a}
+.r{text-align:right}
+#offerContent td,#costContent td{padding:8px 12px;border-bottom:1px solid #eee;vertical-align:top;font-variant-numeric:tabular-nums}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#eee}
+.kpi{background:#fff;padding:14px 16px}
+.kpi-l{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8a7a6a;margin-bottom:5px}
+.kpi-v{font-family:Playfair Display,serif;font-size:1.35rem;font-weight:700}
+.section-title{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8a7a6a;font-weight:600;padding:12px 20px 6px;border-top:1px solid #eee}
+.body-pad{padding:16px 24px}
+tr.subtot td{background:#fdf5dc;font-weight:600;color:#5c4a35}
+tr.totrow td{background:#1a1612;color:#fff;font-weight:700}
+tr.salerow td{background:#2d6a4f;color:#fff;font-weight:700}
+tr.profrow td{background:#c9991a;color:#1a1612;font-weight:700}
+</style>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="logo">
+    <div class="logo-icon">☪</div>
+    <div>
+      <div class="logo-txt">Amana Travel</div>
+      <div class="logo-sub">Umrah Pricing System</div>
+    </div>
+  </div>
+  <span class="rate-pill" onclick="openRateModal()" id="rateDisplay">1 USD = 3.70 SAR</span>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">Professional Quoting Tool</div>
+  <h1>Umrah Package <em>Pricing</em></h1>
+  <div class="hero-sub">Add multiple room types per group — get full cost sheet + clean customer offer.</div>
+</div>
+
+<div class="wrap">
+
+<!-- ══ LEFT ══ -->
+<div class="left">
+  <div class="card">
+    <div class="card-hdr">💾 Saved Trips</div>
+    <div class="card-body">
+      <div style="display:flex;gap:.4rem">
+        <input type="text" id="saveName" placeholder="Name this trip / client" style="flex:1">
+        <button onclick="saveTrip()" style="background:var(--gold);color:var(--ink);border:none;border-radius:5px;padding:.45rem .8rem;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap">Save</button>
+      </div>
+      <div style="display:flex;gap:.4rem;margin-top:.5rem">
+        <select id="savedSelect" style="flex:1"></select>
+        <button onclick="loadTrip()" style="background:#1a1612;color:#f2e6c2;border:none;border-radius:5px;padding:.45rem .7rem;font-size:.72rem;font-weight:700;cursor:pointer">Load</button>
+        <button onclick="deleteTrip()" style="background:#fff;color:#9b2226;border:1.5px solid #e3c9c9;border-radius:5px;padding:.45rem .6rem;font-size:.72rem;cursor:pointer">✕</button>
+      </div>
+      <div id="savedHint" style="font-size:.62rem;color:var(--muted);margin-top:.4rem">Saves pricing, customer, offer &amp; invoice together. Reopen any time to edit.</div>
+      <div style="display:flex;gap:.4rem;margin-top:.55rem;flex-wrap:wrap">
+        <button onclick="exportBackup()" style="background:var(--gold);color:var(--ink);border:none;border-radius:5px;padding:.42rem .7rem;font-size:.7rem;font-weight:700;cursor:pointer">⬇ Export backup</button>
+        <label style="background:#fff;color:#1a1612;border:1.5px solid var(--border);border-radius:5px;padding:.42rem .7rem;font-size:.7rem;font-weight:700;cursor:pointer">⬆ Import backup<input type="file" accept="application/json,.json" onchange="importBackup(this)" style="display:none"></label>
+      </div>
+      <div style="font-size:.6rem;color:var(--muted);margin-top:.3rem">Export a file → drop it in your Google Drive → Import it on any device. Works offline, no setup.</div>
+      <div style="margin-top:.75rem;border-top:1px dashed var(--border);padding-top:.6rem">
+        <div style="font-size:.62rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem">☁ Google Drive · sync across devices</div>
+        <input type="text" id="gdriveCid" placeholder="Google OAuth Client ID (…apps.googleusercontent.com)" style="width:100%;font-size:.66rem">
+        <div style="display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap">
+          <button onclick="driveConnect()" style="background:#1a1612;color:#f2e6c2;border:none;border-radius:5px;padding:.42rem .7rem;font-size:.7rem;font-weight:700;cursor:pointer">Connect</button>
+          <button onclick="driveSave()" style="background:var(--gold);color:var(--ink);border:none;border-radius:5px;padding:.42rem .7rem;font-size:.7rem;font-weight:700;cursor:pointer">☁ Save to Drive</button>
+          <button onclick="driveLoad()" style="background:#fff;color:#1a1612;border:1.5px solid var(--border);border-radius:5px;padding:.42rem .7rem;font-size:.7rem;font-weight:700;cursor:pointer">☁ Load from Drive</button>
+        </div>
+        <div id="gdriveStatus" style="font-size:.6rem;color:var(--muted);margin-top:.35rem">Automatic sync — needs the tool hosted online (GitHub Pages) and a Client ID ending in .apps.googleusercontent.com (not a Drive link).</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Package Info -->
+  <div class="card">
+    <div class="card-hdr">📋 Package Info</div>
+    <div class="card-body">
+      <div>
+        <label>Package / Group Name</label>
+        <input type="text" id="pkgName" placeholder="e.g. September Umrah 2026">
+      </div>
+      <div style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:6px;padding:.7rem .85rem">
+        <div style="font-size:.62rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem">&#128100; Customer Details</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <div>
+            <label>Customer Name</label>
+            <input type="text" id="custName" placeholder="e.g. Mohamed Al-Amin">
+          </div>
+          <div class="g2">
+            <div>
+              <label>Phone No.</label>
+              <input type="text" id="custPhone" placeholder="e.g. +1 718-555-0100">
+            </div>
+            <div>
+              <label>Address</label>
+              <input type="text" id="custAddress" placeholder="e.g. Brooklyn, NY">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="g2">
+        <div>
+          <label>Madinah Arrival Date</label>
+          <input type="text" id="madArrival" placeholder="e.g. 10/Sep/2026">
+        </div>
+        <div>
+          <label>Madinah Arrival Time</label>
+          <input type="text" id="madArrivalTime" placeholder="e.g. 4:40 PM">
+        </div>
+      </div>
+      <div>
+        <label>Madinah Arrival By <span>itinerary first stop</span></label>
+        <select id="madArrivalMode" onchange="recalc()">
+          <option value="air" selected>International Airport</option>
+          <option value="train">Train Station</option>
+          <option value="bus">By Bus</option>
+        </select>
+      </div>
+      <div class="g2">
+        <div>
+          <label>Madinah Departure Date</label>
+          <input type="text" id="madDeparture" placeholder="e.g. 14/Sep/2026">
+        </div>
+        <div>
+          <label>Madinah Departure Time</label>
+          <input type="text" id="madDepartureTime" placeholder="e.g. 10:00 AM">
+        </div>
+      </div>
+      <div class="g2">
+        <div>
+          <label>Makkah Arrival Date</label>
+          <input type="text" id="makArrival" placeholder="e.g. 14/Sep/2026">
+        </div>
+        <div>
+          <label>Makkah Arrival Time</label>
+          <input type="text" id="makArrivalTime" placeholder="e.g. 2:00 PM">
+        </div>
+      </div>
+      <div class="g2">
+        <div>
+          <label>Makkah Departure Date</label>
+          <input type="text" id="makDeparture" placeholder="e.g. 18/Sep/2026">
+        </div>
+        <div>
+          <label>Makkah Departure Time</label>
+          <input type="text" id="makDepartureTime" placeholder="e.g. 8:00 AM">
+        </div>
+      </div>
+      <div>
+        <label>Outbound Flight</label>
+        <input type="text" id="flight1" placeholder="e.g. SV 20 — 09 Sep — JFK → JED — 7:00PM">
+      </div>
+      <div>
+        <label>Connecting Flight (optional)</label>
+        <input type="text" id="flight2" placeholder="e.g. SV1428 — 10 Sep — JED → MED — 4:40PM">
+      </div>
+      <div>
+        <label>Return Flight</label>
+        <input type="text" id="flight3" placeholder="e.g. SV 21 — 18 Sep — JED → JFK — 8:50AM">
+      </div>
+      <div>
+        <label>Airline</label>
+        <input type="text" id="airline" placeholder="e.g. Saudi Airlines">
+      </div>
+    </div>
+  </div>
+
+  <!-- Trains -->
+  <div class="card">
+    <div class="card-hdr">🚆 Trains</div>
+    <div class="card-body">
+      <div style="font-size:.68rem;color:var(--muted);margin-bottom:.1rem">Add each train segment — from, to, date &amp; time. Each one shows in the customer offer.</div>
+      <div id="trainList"></div>
+      <button class="add-btn" onclick="addTrain()" style="width:100%;margin-top:.2rem">+ Add Train</button>
+    </div>
+  </div>
+
+  <!-- Hotels -->
+  <div class="card">
+    <div class="card-hdr">🌙 Madinah Hotel</div>
+    <div class="card-body">
+      <div style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:6px;padding:.7rem .85rem;margin-bottom:.25rem">
+        <label style="font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;display:block">&#127769; Madinah Hotel Name</label>
+        <input type="text" id="madHotelName" placeholder="e.g. Pullman Zamzam Madinah" oninput="recalc()" style="background:#fff;font-size:.85rem;font-weight:500">
+      </div>
+      <div style="font-size:.65rem;color:#5c4a35;background:var(--gold-pale);border:1px solid var(--gold-light);border-radius:4px;padding:.5rem .75rem;line-height:1.8">
+        💡 Enter the <strong>total room cost per night</strong> — what the hotel charges for the <em>whole room</em>, shared by all persons inside.<br>
+        <strong>Cost per person = Total Room Cost/Night × Nights ÷ Persons sharing</strong>
+      </div>
+      <div style="border:1.5px solid var(--gold-light);border-radius:4px;padding:.65rem .8rem;background:var(--sand)">
+        <div style="font-size:.62rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem">🛏 Double Room — total price for 2 persons together</div>
+        <div class="g2">
+          <div><label>Total Room/Night <span>SAR</span></label><input type="number" id="madDblSAR" value="0" min="0" oninput="hotelSarUsd('madDbl')"></div>
+          <div><label>Total Room/Night <span>USD</span></label><input type="number" id="madDblUSD" value="0" min="0" step=".01" oninput="hotelUsdSar('madDbl')"></div>
+        </div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:.3rem" id="madDblNote">→ Cost per person = —</div>
+      </div>
+      <div style="border:1.5px solid #c8b8a0;border-radius:4px;padding:.65rem .8rem;background:var(--sand)">
+        <div style="font-size:.62rem;font-weight:700;color:var(--brown);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem">🛏 Triple Room — total price for 3 persons together</div>
+        <div class="g2">
+          <div><label>Total Room/Night <span>SAR</span></label><input type="number" id="madTplSAR" value="0" min="0" oninput="hotelSarUsd('madTpl')"></div>
+          <div><label>Total Room/Night <span>USD</span></label><input type="number" id="madTplUSD" value="0" min="0" step=".01" oninput="hotelUsdSar('madTpl')"></div>
+        </div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:.3rem" id="madTplNote">→ Cost per person = —</div>
+      </div>
+      <div style="border:1.5px solid #d4b0b0;border-radius:4px;padding:.65rem .8rem;background:var(--sand)">
+        <div style="font-size:.62rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem">🛏 Quad Room — total price for 4 persons together</div>
+        <div class="g2">
+          <div><label>Total Room/Night <span>SAR</span></label><input type="number" id="madQudSAR" value="0" min="0" oninput="hotelSarUsd('madQud')"></div>
+          <div><label>Total Room/Night <span>USD</span></label><input type="number" id="madQudUSD" value="0" min="0" step=".01" oninput="hotelUsdSar('madQud')"></div>
+        </div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:.3rem" id="madQudNote">→ Cost per person = —</div>
+      </div>
+      <div><label>Nights in Madinah</label><input type="number" id="madN" value="4" min="0" max="30" oninput="recalc()"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">🕌 Makkah Hotel</div>
+    <div class="card-body">
+      <div style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:6px;padding:.7rem .85rem;margin-bottom:.25rem">
+        <label style="font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;display:block">&#128332; Makkah Hotel Name</label>
+        <input type="text" id="makHotelName" placeholder="e.g. Swissotel Al Maqam Makkah" oninput="recalc()" style="background:#fff;font-size:.85rem;font-weight:500">
+      </div>
+      <div style="font-size:.65rem;color:#5c4a35;background:var(--gold-pale);border:1px solid var(--gold-light);border-radius:4px;padding:.5rem .75rem;line-height:1.8">
+        💡 Enter the <strong>total room cost per night</strong> — what the hotel charges for the <em>whole room</em>, shared by all persons inside.<br>
+        <strong>Cost per person = Total Room Cost/Night × Nights ÷ Persons sharing</strong>
+      </div>
+      <div style="border:1.5px solid var(--gold-light);border-radius:4px;padding:.65rem .8rem;background:var(--sand)">
+        <div style="font-size:.62rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem">🛏 Double Room — total price for 2 persons together</div>
+        <div class="g2">
+          <div><label>Total Room/Night <span>SAR</span></label><input type="number" id="makDblSAR" value="0" min="0" oninput="hotelSarUsd('makDbl')"></div>
+          <div><label>Total Room/Night <span>USD</span></label><input type="number" id="makDblUSD" value="0" min="0" step=".01" oninput="hotelUsdSar('makDbl')"></div>
+        </div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:.3rem" id="makDblNote">→ Cost per person = —</div>
+      </div>
+      <div style="border:1.5px solid #c8b8a0;border-radius:4px;padding:.65rem .8rem;background:var(--sand)">
+        <div style="font-size:.62rem;font-weight:700;color:var(--brown);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem">🛏 Triple Room — total price for 3 persons together</div>
+        <div class="g2">
+          <div><label>Total Room/Night <span>SAR</span></label><input type="number" id="makTplSAR" value="0" min="0" oninput="hotelSarUsd('makTpl')"></div>
+          <div><label>Total Room/Night <span>USD</span></label><input type="number" id="makTplUSD" value="0" min="0" step=".01" oninput="hotelUsdSar('makTpl')"></div>
+        </div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:.3rem" id="makTplNote">→ Cost per person = —</div>
+      </div>
+      <div style="border:1.5px solid #d4b0b0;border-radius:4px;padding:.65rem .8rem;background:var(--sand)">
+        <div style="font-size:.62rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem">🛏 Quad Room — total price for 4 persons together</div>
+        <div class="g2">
+          <div><label>Total Room/Night <span>SAR</span></label><input type="number" id="makQudSAR" value="0" min="0" oninput="hotelSarUsd('makQud')"></div>
+          <div><label>Total Room/Night <span>USD</span></label><input type="number" id="makQudUSD" value="0" min="0" step=".01" oninput="hotelUsdSar('makQud')"></div>
+        </div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:.3rem" id="makQudNote">→ Cost per person = —</div>
+      </div>
+      <div><label>Nights in Makkah</label><input type="number" id="makN" value="5" min="0" max="30" oninput="recalc()"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">✈️ Other City (Optional)</div>
+    <div class="card-body">
+      <div class="g2">
+        <div><label>City Name</label><input type="text" id="otherCity" placeholder="e.g. Istanbul"></div>
+        <div><label>Cost / Person / Night <span>USD</span></label><input type="number" id="otherUSD" value="0" min="0" step=".01"></div>
+      </div>
+      <div><label>Nights</label><input type="number" id="otherN" value="0" min="0" max="30"></div>
+      <div class="g2">
+        <div><label>Arrival Date</label><input type="text" id="otherArrival" placeholder="e.g. 13/Sep/2026"></div>
+        <div><label>Arrival Time</label><input type="text" id="otherArrivalTime" placeholder="e.g. 8:00 PM"></div>
+      </div>
+      <div class="g2">
+        <div><label>Departure Date</label><input type="text" id="otherDeparture" placeholder="e.g. 15/Sep/2026"></div>
+        <div><label>Departure Time</label><input type="text" id="otherDepartureTime" placeholder="e.g. 11:00 AM"></div>
+      </div>
+      <div><label>Itinerary <span>one line per item — shows on the offer</span></label>
+        <textarea id="otherItin" placeholder="e.g.&#10;Arrival at Istanbul Airport&#10;Meet & Assist&#10;Transfer to hotel&#10;Bosphorus & city tour&#10;Transfer to airport" oninput="recalc()"></textarea></div>
+    </div>
+  </div>
+
+  <!-- Flyer Options -->
+  <div class="card">
+    <div class="card-hdr">🖼️ Marketing Flyer (Optional)</div>
+    <div class="card-body">
+      <div style="font-size:.68rem;color:var(--muted);margin-bottom:.1rem">For the printable promo flyer. Prices (Quad/Triple/Double), hotels &amp; nights pull in automatically — these just fine-tune it.</div>
+      <div class="g2">
+        <div><label>Star Rating</label>
+          <select id="flyStars">
+            <option value="5" selected>5 Star</option>
+            <option value="4">4 Star</option>
+            <option value="3">3 Star</option>
+          </select></div>
+        <div><label>Date Range <span>blank = auto</span></label><input type="text" id="flyDateRange" placeholder="e.g. 8 Mar – 24 Mar"></div>
+      </div>
+      <div><label>Tagline <span>optional</span></label><input type="text" id="flyTagline" placeholder="e.g. The last ten days of Ramadan"></div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="card">
+    <div class="card-hdr">🎫 Services (per person)</div>
+    <div class="card-body">
+      <div class="g2">
+        <div><label>Airline Ticket <span>USD</span></label><input type="number" id="ticket" value="1200" min="0"></div>
+        <div><label>Saudi Visa <span>USD</span></label><input type="number" id="visa" value="115" min="0"></div>
+      </div>
+      <div class="g3">
+        <div><label>Train <span>USD</span></label><input type="number" id="train" value="65" min="0"></div>
+        <div><label>Bus <span>USD</span></label><input type="number" id="bus" value="50" min="0"></div>
+        <div><label>Operations <span>USD</span></label><input type="number" id="ops" value="200" min="0"></div>
+      </div>
+      <div class="g2">
+        <div><label>Commission <span>USD</span></label><input type="number" id="commission" value="0" min="0"></div>
+        <div><label>Other Fees <span>USD</span></label><input type="number" id="otherFees" value="0" min="0"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Room Groups -->
+  <div class="card">
+    <div class="card-hdr">👥 Group Composition</div>
+    <div class="card-body">
+      <div style="font-size:.68rem;color:var(--muted);margin-bottom:.3rem">Add each room type in this group. Mix Double, Triple, and Quad as needed.</div>
+      <div class="group-list" id="groupList"></div>
+      <div class="add-row" style="margin-top:.5rem">
+        <select id="addType">
+          <option value="Single">Single (1 person)</option>
+          <option value="Double" selected>Double (2 persons)</option>
+          <option value="Triple">Triple (3 persons)</option>
+          <option value="Quad">Quad (4 persons)</option>
+        </select>
+        <input type="number" id="addPax" value="2" min="1" max="200" placeholder="# pax">
+        <button class="add-btn" onclick="addGroup()">+ Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Children -->
+  <div class="card">
+    <div class="card-hdr">🧒 Children &amp; Infants</div>
+    <div class="card-body">
+      <div style="font-size:.68rem;color:var(--muted);margin-bottom:.1rem">Priced separately from the rooms. Set the <strong>price per child</strong> here when adding (you can edit cost &amp; price afterward). Leave price at 0 to auto-apply the margin to the cost.</div>
+      <div class="child-list" id="childList"></div>
+      <div class="add-row" style="grid-template-columns:1fr 46px 70px 36px;margin-top:.3rem;align-items:end">
+        <div><label style="font-size:.55rem">Type</label>
+        <select id="childType">
+          <option value="Child (with bed)">Child — with bed</option>
+          <option value="Child (no bed)">Child — no bed</option>
+          <option value="Infant">Infant (under 2)</option>
+        </select></div>
+        <div><label style="font-size:.55rem">Qty</label><input type="number" id="childCount" value="1" min="1" max="100"></div>
+        <div><label style="font-size:.55rem">Price $</label><input type="number" id="childPrice" value="0" min="0" step=".01" placeholder="0"></div>
+        <button class="add-btn" onclick="addChild()">+ Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Margin -->
+  <div class="card">
+    <div class="card-hdr">💹 Profit Margin</div>
+    <div class="card-body">
+      <label>Margin % on total cost</label>
+      <div class="sl-row">
+        <input type="range" id="slMargin" min="5" max="60" value="20" oninput="syncSlider()">
+        <div class="sl-val" id="slVal">20%</div>
+      </div>
+      <input type="number" id="numMargin" value="20" min="0" max="200" oninput="syncNum()" style="margin-top:.35rem">
+      <div style="margin-top:.5rem">
+        <label>Custom Sales Price Override <span>USD — leave 0 to use margin above</span></label>
+        <input type="number" id="customPrice" value="0" min="0" placeholder="0 = auto">
+      </div>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="recalc()">⟳  Calculate Pricing</button>
+  <button id="mawasim-load-btn" onclick="loadMawasimPrices()" style="
+    display:none;width:100%;padding:.7rem;border:1.5px solid #2d6a4f;border-radius:var(--r);
+    background:rgba(45,106,79,.1);color:#2d6a4f;font-family:'DM Sans',sans-serif;
+    font-size:.8rem;font-weight:700;cursor:pointer;letter-spacing:.05em;margin-top:.5rem;
+    transition:all .15s;
+  " onmouseover="this.style.background='rgba(45,106,79,.2)'" onmouseout="this.style.background='rgba(45,106,79,.1)'">
+    📥 Load Prices from Mawasim
+  </button>
+  <div id="mawasim-status" style="display:none;font-size:.65rem;color:#2d6a4f;text-align:center;margin-top:.3rem;padding:.3rem;background:rgba(45,106,79,.08);border-radius:4px"></div>
+</div>
+
+<!-- ══ RIGHT ══ -->
+<div class="right">
+
+  <div id="emptyState" class="empty">
+    <div class="empty-icon">☪</div>
+    <div style="font-size:.85rem">Add room groups and hotel rates to get started</div>
+    <div style="font-size:.7rem;color:var(--border)">Results will appear here</div>
+  </div>
+
+  <div id="resultsArea" style="display:none;flex-direction:column;gap:1.4rem">
+
+    <!-- ACTIONS -->
+    <div class="action-bar">
+      <button class="act-btn primary" onclick="printOffer()">📄 Customer Offer</button>
+      <button class="act-btn" onclick="printFlyer()">🖼️ Marketing Flyer</button>
+      <button class="act-btn" onclick="printCostSheet()">📊 Internal Cost Sheet</button>
+      <button class="act-btn" onclick="printInvoice()">🧾 Invoice</button>
+      <button class="act-btn" onclick="saveTrip()">💾 Save Trip</button>
+      <button class="act-btn" onclick="copyQuote()">📋 Copy Summary</button>
+    </div>
+
+    <!-- SUMMARY HERO -->
+    <div class="res-hero" id="resHero"></div>
+
+    <!-- GROUP TABLE -->
+    <div class="tbl-wrap">
+      <div class="tbl-hdr">GROUP SUMMARY — ALL ROOM TYPES</div>
+      <div style="overflow-x:auto"><table id="summaryTable"></table></div>
+    </div>
+
+    <!-- BREAKDOWN CARDS per type -->
+    <div class="tbl-hdr" style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600">COST BREAKDOWN BY ROOM TYPE</div>
+    <div class="breakdown-grid" id="breakdownGrid"></div>
+
+  </div>
+</div>
+</div>
+
+<!-- Rate Modal -->
+<div class="modal-overlay" id="rateModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeRateModal()">✕</button>
+    <h3>Exchange Rate</h3>
+    <div class="modal-fld">
+      <label>SAR per 1 USD</label>
+      <input type="number" id="sarRateInput" value="3.70" step="0.01" style="width:100%;padding:.5rem .65rem;border:1.5px solid var(--border);border-radius:4px;font-size:.9rem;font-family:DM Sans,sans-serif">
+    </div>
+    <button class="modal-btn" onclick="saveRate()">Update & Recalculate</button>
+  </div>
+</div>
+
+<!-- ══ FULLSCREEN OFFER OVERLAY ══ -->
+<div id="offerOverlay" >
+  <div style="position:sticky;top:0;background:#1a1612;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between;z-index:10">
+    <div style="font-family:Playfair Display,serif;color:var(--sand);font-size:1rem">Customer Offer Preview</div>
+    <div style="display:flex;gap:.75rem">
+      <button onclick="printOverlay('offerOverlay')" style="background:var(--gold);color:var(--ink);border:none;padding:.5rem 1.2rem;border-radius:4px;font-family:DM Sans,sans-serif;font-size:.78rem;font-weight:700;cursor:pointer">🖨 Print / Save PDF</button>
+      <button onclick="closeOverlay('offerOverlay')" style="background:rgba(255,255,255,.1);color:var(--sand);border:1px solid rgba(255,255,255,.2);padding:.5rem 1rem;border-radius:4px;font-family:DM Sans,sans-serif;font-size:.78rem;cursor:pointer">✕ Close</button>
+    </div>
+  </div>
+  <div style="max-width:760px;margin:28px auto;padding:0 1rem 4rem">
+    <div id="offerContent" style="padding:0 1rem 4rem"></div>
+  </div>
+</div>
+
+<!-- ══ FULLSCREEN COST SHEET OVERLAY ══ -->
+<div id="costOverlay" style="display:none;position:fixed;inset:0;background:#f0f0f0;z-index:500;flex-direction:column">
+  <div style="position:sticky;top:0;background:#1a1612;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between;z-index:10">
+    <div style="font-family:Playfair Display,serif;color:var(--sand);font-size:1rem">Internal Cost Sheet <span style="background:#9b2226;color:#fff;font-size:.6rem;padding:.15rem .5rem;border-radius:3px;letter-spacing:.1em;text-transform:uppercase;margin-left:.5rem">Confidential</span></div>
+    <div style="display:flex;gap:.75rem">
+      <button onclick="printOverlay('costOverlay')" style="background:var(--gold);color:var(--ink);border:none;padding:.5rem 1.2rem;border-radius:4px;font-family:DM Sans,sans-serif;font-size:.78rem;font-weight:700;cursor:pointer">🖨 Print / Save PDF</button>
+      <button onclick="closeOverlay('costOverlay')" style="background:rgba(255,255,255,.1);color:var(--sand);border:1px solid rgba(255,255,255,.2);padding:.5rem 1rem;border-radius:4px;font-family:DM Sans,sans-serif;font-size:.78rem;cursor:pointer">✕ Close</button>
+    </div>
+  </div>
+  <div style="max-width:820px;margin:24px auto;padding:0 1rem 4rem">
+    <div id="costContent" style="padding:0 1rem 4rem"></div>
+  </div>
+</div>
+
+<!-- ══ FULLSCREEN FLYER OVERLAY ══ -->
+<div id="flyerOverlay" style="display:none;position:fixed;inset:0;background:#3a3a3a;z-index:500;flex-direction:column;overflow-y:auto">
+  <div style="position:sticky;top:0;background:#1a1612;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between;z-index:10">
+    <div style="font-family:Playfair Display,serif;color:var(--sand);font-size:1rem">Marketing Flyer Preview <span style="color:var(--gold-light);font-size:.7rem;margin-left:.5rem">Print, save as PDF, or screenshot to share</span></div>
+    <div style="display:flex;gap:.75rem">
+      <button onclick="printOverlay('flyerOverlay')" style="background:var(--gold);color:var(--ink);border:none;padding:.5rem 1.2rem;border-radius:4px;font-family:DM Sans,sans-serif;font-size:.78rem;font-weight:700;cursor:pointer">🖨 Print / Save PDF</button>
+      <button onclick="closeOverlay('flyerOverlay')" style="background:rgba(255,255,255,.1);color:var(--sand);border:1px solid rgba(255,255,255,.2);padding:.5rem 1rem;border-radius:4px;font-family:DM Sans,sans-serif;font-size:.78rem;cursor:pointer">✕ Close</button>
+    </div>
+  </div>
+  <div style="margin:24px auto;padding:0 1rem 4rem">
+    <div id="flyerContent"></div>
+  </div>
+</div>
+
+<style>
+  #offerOverlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#f7f3ee;
+  z-index:500;
+  flex-direction:column;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+#offerOverlay > div:last-child{
+  width:100%;
+  max-width:1000px;
+  margin:24px auto;
+  padding:0 20px 80px;
+}
+
+#offerContent{
+  width:100%;
+  overflow:visible !important;
+}
+@media print {
+  @page { margin: 0.8cm; size: A4; }
+  /* Overlay show/hide is controlled per-document by printOverlay() injected styles */
+  .page-break-before { page-break-before: always !important; }
+}
+</style>
+
+<script>
+
+
+
+var SAR = 3.70;
+function r5(n){ return Math.round(n/5)*5; } // round to nearest 5
+var PPR = { Single:1, Double:2, Triple:3, Quad:4 };
+var TYPE_COLORS = { Single:'#2d6a4f', Double:'#c9991a', Triple:'#5c4a35', Quad:'#9b2226' };
+var HOTEL_ID = { Single:'Dbl', Double:'Dbl', Triple:'Tpl', Quad:'Qud' };
+var NOTE_PPR = { madDbl:2, madTpl:3, madQud:4, makDbl:2, makTpl:3, makQud:4, madSgl:1, makSgl:1 };
+var groups = [];
+var trains = [];
+var kids = [];
+var LOGO = 'data:image/jpeg;base64,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';
+
+function g(id) { return document.getElementById(id); }
+function gv(id) { var el=g(id); return el ? el.value : ''; }
+function gf(id) { return parseFloat(gv(id))||0; }
+function gi(id) { return parseInt(gv(id))||0; }
+function f(n) { if(!n||isNaN(n))return'0'; return Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2}); }
+
+function hotelSarUsd(id){var v=parseFloat(g(id+'SAR').value)||0;g(id+'USD').value=(v/SAR).toFixed(2);updateNote(id);recalc();}
+function hotelUsdSar(id){var v=parseFloat(g(id+'USD').value)||0;g(id+'SAR').value=(v*SAR).toFixed(2);updateNote(id);recalc();}
+function updateNote(id){
+  var usd=parseFloat(gv(id+'USD'))||0;
+  var ppr=NOTE_PPR[id];
+  var nights=id.startsWith('mad')?gi('madN'):gi('makN');
+  var pp=(usd>0&&nights>0)?(usd*nights/ppr).toFixed(2):'-';
+  var el=g(id+'Note');
+  if(el) el.textContent='Cost per person = $'+pp+' ('+f(usd)+' USD x '+nights+' nights / '+ppr+' persons)';
+}
+function updateAllNotes(){['madDbl','madTpl','madQud','makDbl','makTpl','makQud'].forEach(updateNote);}
+function openRateModal(){g('rateModal').classList.add('open');}
+function closeRateModal(){g('rateModal').classList.remove('open');}
+function saveRate(){
+  SAR=parseFloat(gv('sarRateInput'))||3.70;
+  g('rateDisplay').textContent='1 USD = '+SAR.toFixed(2)+' SAR';
+  ['madDbl','madTpl','madQud','makDbl','makTpl','makQud'].forEach(function(id){
+    var el=g(id+'SAR');if(el){g(id+'USD').value=((parseFloat(el.value)||0)/SAR).toFixed(2);}
+  });
+  closeRateModal();recalc();
+}
+function syncSlider(){var v=g('slMargin').value;g('slVal').textContent=v+'%';g('numMargin').value=v;recalc();}
+function syncNum(){var v=parseFloat(gv('numMargin'))||0;g('slMargin').value=Math.min(60,Math.max(5,v));g('slVal').textContent=v+'%';recalc();}
+
+function addGroup(){groups.push({type:gv('addType'),pax:parseInt(gv('addPax'))||1});renderGroups();recalc();}
+function removeGroup(i){groups.splice(i,1);renderGroups();recalc();}
+function renderGroups(){
+  var el=g('groupList');if(!el)return;
+  if(groups.length===0){el.innerHTML='<div style="font-size:.7rem;color:#ccc;text-align:center;padding:.5rem">No groups yet</div>';return;}
+  el.innerHTML=groups.map(function(grp,i){
+    return '<div class="grp-row">'
+      +'<div><div class="grp-type">'+grp.type+'</div><div class="grp-pax">'+PPR[grp.type]+' persons/room</div></div>'
+      +'<input type="number" value="'+grp.pax+'" min="1" max="500" style="width:72px;padding:.3rem .5rem;border:1.5px solid var(--border);border-radius:4px;font-size:.78rem" oninput="groups['+i+'].pax=parseInt(this.value)||1;recalc()">'
+      +'<div class="grp-price" id="grp-price-'+i+'">-</div>'
+      +'<button class="del-btn" onclick="removeGroup('+i+')">x</button>'
+      +'</div>';
+  }).join('');
+}
+
+function escAttr(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ── TRAINS ── */
+function addTrain(){trains.push({from:'',to:'',date:'',time:''});renderTrains();}
+function removeTrain(i){trains.splice(i,1);renderTrains();recalc();}
+function renderTrains(){
+  var el=g('trainList');if(!el)return;
+  if(trains.length===0){el.innerHTML='<div style="font-size:.7rem;color:#ccc;text-align:center;padding:.4rem">No trains added</div>';return;}
+  el.innerHTML=trains.map(function(t,i){
+    return '<div style="border:1.5px solid var(--border);border-radius:4px;padding:.5rem .6rem;margin-bottom:.4rem;background:var(--sand)">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem">'
+        +'<span style="font-size:.6rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.12em">🚆 Train '+(i+1)+'</span>'
+        +'<button class="del-btn" onclick="removeTrain('+i+')">x</button>'
+      +'</div>'
+      +'<div class="g2">'
+        +'<div><label>From</label><input type="text" value="'+escAttr(t.from)+'" placeholder="e.g. Jeddah" oninput="window.trains['+i+'].from=this.value;recalc()"></div>'
+        +'<div><label>To</label><input type="text" value="'+escAttr(t.to)+'" placeholder="e.g. Madinah" oninput="window.trains['+i+'].to=this.value;recalc()"></div>'
+      +'</div>'
+      +'<div class="g2" style="margin-top:.35rem">'
+        +'<div><label>Date</label><input type="text" value="'+escAttr(t.date)+'" placeholder="e.g. 6 Oct 2026" oninput="window.trains['+i+'].date=this.value;recalc()"></div>'
+        +'<div><label>Time</label><input type="text" value="'+escAttr(t.time)+'" placeholder="e.g. 2:00 PM" oninput="window.trains['+i+'].time=this.value;recalc()"></div>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+/* ── CHILDREN ── */
+function addChild(){kids.push({label:gv('childType'),count:parseInt(gv('childCount'))||1,cost:0,price:parseFloat(gv('childPrice'))||0});renderChildren();recalc();}
+function removeChild(i){kids.splice(i,1);renderChildren();recalc();}
+function renderChildren(){
+  var el=g('childList');if(!el)return;
+  if(kids.length===0){el.innerHTML='<div style="font-size:.7rem;color:#ccc;text-align:center;padding:.4rem">No children added</div>';return;}
+  el.innerHTML=kids.map(function(ch,i){
+    return '<div style="border:1.5px solid var(--border);border-radius:4px;padding:.5rem .6rem;margin-bottom:.4rem;background:var(--sand)">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem">'
+        +'<input type="text" value="'+escAttr(ch.label)+'" oninput="window.kids['+i+'].label=this.value;recalc()" style="font-size:.74rem;font-weight:600;color:var(--ink);background:#fff;padding:.25rem .4rem;width:auto;flex:1;margin-right:.4rem">'
+        +'<button class="del-btn" onclick="removeChild('+i+')">x</button>'
+      +'</div>'
+      +'<div class="g3">'
+        +'<div><label>Count</label><input type="number" value="'+ch.count+'" min="1" max="200" oninput="window.kids['+i+'].count=parseInt(this.value)||1;recalc()"></div>'
+        +'<div><label>Cost <span>USD</span></label><input type="number" value="'+ch.cost+'" min="0" step=".01" oninput="window.kids['+i+'].cost=parseFloat(this.value)||0;recalc()"></div>'
+        +'<div><label>Price <span>USD</span></label><input type="number" value="'+ch.price+'" min="0" step=".01" placeholder="0 = auto" oninput="window.kids['+i+'].price=parseFloat(this.value)||0;recalc()"></div>'
+      +'</div>'
+      +'<div style="font-size:.6rem;color:var(--muted);margin-top:.3rem" id="childNote-'+i+'">→ —</div>'
+    +'</div>';
+  }).join('');
+}
+// returns computed child rows: applies margin to cost when price is left at 0
+function childRows(){
+  var margin=gf('numMargin')||20;
+  return kids.map(function(ch){
+    var cost=ch.cost||0;
+    var price=ch.price>0?ch.price:(cost>0?cost*(1+margin/100):0);
+    return {label:ch.label||'Child',count:ch.count||0,cost:cost,price:price,profit:price-cost};
+  });
+}
+
+function costForSingle(){
+  // Single occupancy: pays FULL double room price (not split) + all services
+  var madR=gf('madDblUSD'), makR=gf('makDblUSD');
+  var madN=gf('madN'), makN=gf('makN');
+  var madPP=madR*madN;   // full room, not divided by 2
+  var makPP=makR*makN;   // full room, not divided by 2
+  var othU=gf('otherUSD'), othN2=gf('otherN'), othPP=othU*othN2;
+  var hotPP=madPP+makPP+othPP;
+  var ticket=gf('ticket'),visa=gf('visa'),train=gf('train'),bus=gf('bus'),ops=gf('ops'),comm=gf('commission'),otherF=gf('otherFees');
+  var svcPP=ticket+visa+train+bus+ops+comm+otherF;
+  var totPP=hotPP+svcPP;
+  var margin=gf('numMargin')||20, custom=gf('customPrice');
+  var salePP=custom>0?custom:totPP*(1+margin/100);
+  var profPP=salePP-totPP;
+  return {hotPP:hotPP,svcPP:svcPP,totPP:totPP,salePP:salePP,profPP:profPP,margin:margin};
+}
+
+function costForType(type){
+  var ppr=PPR[type],hid=HOTEL_ID[type];
+  var madR=gf('mad'+hid+'USD'),makR=gf('mak'+hid+'USD');
+  var madN=gf('madN'),makN=gf('makN');
+  var madPP=madR*madN/ppr,makPP=makR*makN/ppr;
+  var othU=gf('otherUSD'),othN=gf('otherN'),othPP=othU*othN;
+  var hotPP=madPP+makPP+othPP;
+  var ticket=gf('ticket'),visa=gf('visa'),train=gf('train'),bus=gf('bus'),ops=gf('ops'),comm=gf('commission'),otherF=gf('otherFees');
+  var svcPP=ticket+visa+train+bus+ops+comm+otherF;
+  var totPP=hotPP+svcPP;
+  var margin=gf('numMargin')||20,custom=gf('customPrice');
+  var salePP=custom>0?custom:totPP*(1+margin/100);
+  var profPP=salePP-totPP;
+  return {ppr:ppr,madRoomSAR:gf('mad'+hid+'SAR'),makRoomSAR:gf('mak'+hid+'SAR'),
+    madRoomUSD:madR,makRoomUSD:makR,madN:madN,makN:makN,
+    madPP:madPP,makPP:makPP,othPP:othPP,hotPP:hotPP,
+    ticket:ticket,visa:visa,train:train,bus:bus,ops:ops,comm:comm,otherF:otherF,
+    svcPP:svcPP,totPP:totPP,salePP:salePP,profPP:profPP,margin:margin};
+}
+
+function f(n){if(!n||isNaN(n))return'0';return Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2});}
+
+function recalc(){
+  updateAllNotes();
+  if(groups.length===0&&kids.length===0){g('emptyState').style.display='flex';g('resultsArea').style.display='none';return;}
+  g('emptyState').style.display='none';g('resultsArea').style.display='flex';
+  var totPax=0,totRev=0,totCost=0,totProfit=0;
+  var computed=groups.map(function(grp,i){
+    var c=costForType(grp.type);
+    totPax+=grp.pax;totRev+=c.salePP*grp.pax;totCost+=c.totPP*grp.pax;totProfit+=c.profPP*grp.pax;
+    var el=g('grp-price-'+i);if(el)el.textContent='$'+f(c.salePP);
+    return {grp:grp,c:c,rooms:Math.ceil(grp.pax/c.ppr)};
+  });
+  // children — separate pricing, added into totals
+  var kidRows=childRows(),totKids=0;
+  kidRows.forEach(function(ch,i){
+    totPax+=ch.count;totKids+=ch.count;totRev+=ch.price*ch.count;totCost+=ch.cost*ch.count;totProfit+=ch.profit*ch.count;
+    var n=g('childNote-'+i);if(n)n.textContent='→ $'+f(ch.price)+'/child × '+ch.count+' = $'+f(ch.price*ch.count)+(ch.price>ch.cost?'  (profit $'+f(ch.profit*ch.count)+')':'');
+  });
+  g('resHero').innerHTML=
+    '<div class="rstat"><div class="rstat-lbl">Total Passengers</div><div class="rstat-val">'+totPax+'</div><div class="rstat-note">'+groups.length+' room type'+(groups.length>1?'s':'')+(totKids>0?' + '+totKids+' child'+(totKids>1?'ren':''):'')+'</div></div>'
+  +(gf('madDblUSD')>0||gf('makDblUSD')>0?'<div class="rstat"><div class="rstat-lbl">Single Occupancy</div><div class="rstat-val" style="font-size:1.1rem">$'+r5(costForSingle().salePP)+'</div><div class="rstat-note">1 pax / full dbl room</div></div>':'')
+    +'<div class="rstat"><div class="rstat-lbl">Total Revenue</div><div class="rstat-val gold-c">$'+f(totRev)+'</div><div class="rstat-note">Sales price x all pax</div></div>'
+    +'<div class="rstat"><div class="rstat-lbl">Total Cost</div><div class="rstat-val blue-c">$'+f(totCost)+'</div><div class="rstat-note">Before markup</div></div>'
+    +'<div class="rstat"><div class="rstat-lbl">Total Profit</div><div class="rstat-val green-c">$'+f(totProfit)+'</div><div class="rstat-note">'+(totCost>0?(totProfit/totCost*100).toFixed(1):0)+'% margin</div></div>';
+  var thead='<thead><tr><th>Room Type</th><th>Persons</th><th>Rooms</th><th>Hotel/pp</th><th>Services/pp</th><th>Cost/pp</th><th>Price/pp</th><th>Profit/pp</th><th>Group Cost</th><th>Group Revenue</th><th>Group Profit</th></tr></thead>';
+  var tbody='<tbody>';
+  computed.forEach(function(row){
+    var grp=row.grp,c=row.c;
+    tbody+='<tr><td><strong style="color:'+TYPE_COLORS[grp.type]+'">'+grp.type+'</strong></td>'
+      +'<td>'+grp.pax+'</td><td>'+row.rooms+'</td>'
+      +'<td>$'+f(c.hotPP)+'</td><td>$'+f(c.svcPP)+'</td><td>$'+f(c.totPP)+'</td>'
+      +'<td class="goldc">$'+f(c.salePP)+'</td><td class="gc">$'+f(c.profPP)+'</td>'
+      +'<td>$'+f(c.totPP*grp.pax)+'</td><td class="goldc">$'+f(c.salePP*grp.pax)+'</td><td class="gc">$'+f(c.profPP*grp.pax)+'</td></tr>';
+  });
+  kidRows.forEach(function(ch){
+    tbody+='<tr><td><strong style="color:#7048a8">'+escAttr(ch.label)+'</strong></td>'
+      +'<td>'+ch.count+'</td><td>&mdash;</td>'
+      +'<td>&mdash;</td><td>&mdash;</td><td>$'+f(ch.cost)+'</td>'
+      +'<td class="goldc">$'+f(ch.price)+'</td><td class="gc">$'+f(ch.profit)+'</td>'
+      +'<td>$'+f(ch.cost*ch.count)+'</td><td class="goldc">$'+f(ch.price*ch.count)+'</td><td class="gc">$'+f(ch.profit*ch.count)+'</td></tr>';
+  });
+  tbody+='<tr class="total-row"><td><strong>TOTAL</strong></td><td>'+totPax+'</td><td></td><td></td><td></td><td></td><td></td><td></td><td>$'+f(totCost)+'</td><td>$'+f(totRev)+'</td><td class="gc">$'+f(totProfit)+'</td></tr></tbody>';
+  g('summaryTable').innerHTML=thead+tbody;
+  var othCity=gv('otherCity')||'Other City',madNv=gv('madN'),makNv=gv('makN'),othNv=gv('otherN');
+  var uTypes=groups.map(function(grp){return grp.type;}).filter(function(v,i,a){return a.indexOf(v)===i;});
+  g('breakdownGrid').innerHTML=uTypes.map(function(type){
+    var c=costForType(type),col=TYPE_COLORS[type];
+    var rows=[
+      {l:'Madinah: '+c.madRoomSAR+' SAR x '+madNv+' nights / '+c.ppr+' pax',v:c.madPP,hide:c.madPP===0},
+      {l:'Makkah: '+c.makRoomSAR+' SAR x '+makNv+' nights / '+c.ppr+' pax',v:c.makPP,hide:c.makPP===0},
+      {l:othCity+' '+othNv+' nights/pax',v:c.othPP,hide:c.othPP===0},
+      {l:'Airline Ticket',v:c.ticket,hide:c.ticket===0},
+      {l:'Saudi Visa',v:c.visa,hide:c.visa===0},
+      {l:'Haramain Train',v:c.train,hide:c.train===0},
+      {l:'Bus/Transport',v:c.bus,hide:c.bus===0},
+      {l:'Operations',v:c.ops,hide:c.ops===0},
+      {l:'Commission',v:c.comm,hide:c.comm===0},
+      {l:'Other Fees',v:c.otherF,hide:c.otherF===0},
+    ].filter(function(r){return !r.hide;});
+    return '<div class="bk-card"><div class="bk-card-hdr" style="background:'+col+'">'+type+' Room - '+c.ppr+' Persons/Room</div>'
+      +'<div class="bk-card-body">'+rows.map(function(r){return '<div class="bk-row"><span class="bk-label">'+r.l+'</span><span class="bk-val">$'+f(r.v)+'</span></div>';}).join('')
+      +'<div class="bk-row subtot"><span>Total Hotels</span><span>$'+f(c.hotPP)+'</span></div>'
+      +'<div class="bk-row subtot"><span>Total Services</span><span>$'+f(c.svcPP)+'</span></div>'
+      +'<div class="bk-row tot"><span>TOTAL COST / PERSON</span><span>$'+f(c.totPP)+'</span></div>'
+      +'<div class="bk-row sale"><span>SALES PRICE / PERSON</span><span>$'+f(c.salePP)+'</span></div>'
+      +'<div class="bk-row profit"><span>PROFIT / PERSON</span><span>+$'+f(c.profPP)+'</span></div>'
+      +'</div></div>';
+  }).join('') + kidRows.map(function(ch){
+    return '<div class="bk-card"><div class="bk-card-hdr" style="background:#7048a8">'+escAttr(ch.label)+' &mdash; '+ch.count+' pax</div>'
+      +'<div class="bk-card-body">'
+      +'<div class="bk-row tot"><span>COST / CHILD</span><span>$'+f(ch.cost)+'</span></div>'
+      +'<div class="bk-row sale"><span>PRICE / CHILD</span><span>$'+f(ch.price)+'</span></div>'
+      +'<div class="bk-row profit"><span>PROFIT / CHILD</span><span>+$'+f(ch.profit)+'</span></div>'
+      +'</div></div>';
+  }).join('');
+}
+
+function showOverlay(id){['offerOverlay','costOverlay','flyerOverlay','invoiceOverlay'].forEach(function(o){var e=g(o);if(e)e.style.display='none';});g(id).style.display='flex';document.body.style.overflow='hidden';}
+function closeOverlay(id){g(id).style.display='none';document.body.style.overflow='';}
+
+function printOverlay(contentId){
+  // Hide toolbar, print, then restore
+  var overlay = g(contentId);
+  var toolbar = overlay.querySelector('div:first-child');
+  if(toolbar) toolbar.style.display = 'none';
+
+  // Add print style temporarily
+  var styleEl = document.createElement('style');
+  styleEl.id = 'printStyle';
+  styleEl.innerHTML = [
+    '@page{margin:0.8cm;size:A4;marks:none}',
+    '@media print{',
+    'body > *:not(#'+contentId+'){display:none!important}',
+    '#'+contentId+'{position:static!important;overflow:visible!important;height:auto!important;background:#fff!important;display:block!important}',
+    '#'+contentId+' > div:first-child{display:none!important}',
+    '#'+contentId+' > div:last-child{padding:0!important;margin:0!important}',
+    '}'
+  ].join('');
+  document.head.appendChild(styleEl);
+
+  window.print();
+
+  // Restore after print dialog closes
+  setTimeout(function(){
+    if(toolbar) toolbar.style.display = '';
+    var s = document.getElementById('printStyle');
+    if(s) s.parentNode.removeChild(s);
+  }, 1000);
+}
+
+function printFlyer(){
+  recalc();
+  g('flyerContent').innerHTML=buildFlyerHTML();
+  showOverlay('flyerOverlay');
+}
+function flyerPrice(type){ var c=costForType(type); return c.salePP>0 ? r5(c.salePP) : 0; }
+function buildFlyerHTML(){
+  var pkg     = gv('pkgName')||'Umrah Package';
+  var tagline = (gv('flyTagline')||'').trim();
+  var stars   = gi('flyStars')||5;
+  var madHotel= gv('madHotelName')||'Madinah Hotel';
+  var makHotel= gv('makHotelName')||'Makkah Hotel';
+  var madN=gi('madN'), makN=gi('makN'), othN=gi('otherN'), othCity=(gv('otherCity')||'').trim();
+  var totalN = madN+makN+othN;
+  var dr=(gv('flyDateRange')||'').trim();
+  if(!dr){ var a=(gv('madArrival')||'').trim(), b=(gv('makDeparture')||'').trim(); dr=(a&&b)?a+' &ndash; '+b:(a||b||''); }
+  var quad=flyerPrice('Quad'), tpl=flyerPrice('Triple'), dbl=flyerPrice('Double');
+  var pv=function(v){ return v>0?'$'+f(v):'&mdash;'; };
+  var starStr=''; for(var i=0;i<stars;i++) starStr+='&#9733;';
+
+  var priceCol=function(label,val,accent){
+    return '<div style="flex:1;text-align:center;padding:14px 8px;'+(accent?'background:linear-gradient(180deg,#fbf6ec,#f3e7cf);':'background:#fff;')+'border-radius:10px;border:2px solid '+(accent?'#c9991a':'#e3d8c6')+'">'
+      +'<div style="font-family:DM Sans,sans-serif;font-size:14px;font-weight:700;color:#1a1612;text-transform:uppercase;letter-spacing:.08em">'+label+'</div>'
+      +'<div style="font-family:Playfair Display,serif;font-size:34px;font-weight:800;color:#1a1612;line-height:1.1;margin-top:4px">'+pv(val)+'</div>'
+      +'<div style="font-size:11px;color:#7a6a55;font-weight:600">per person</div>'
+    +'</div>';
+  };
+  var incl=function(icon,txt){
+    return '<div style="display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#1a1612"><span style="font-size:17px">'+icon+'</span>'+txt+'</div>';
+  };
+  var hotelBox=function(emoji,city,name,n){
+    return '<div style="flex:1;background:#fff;border:1.5px solid #e3d8c6;border-radius:10px;padding:11px 13px">'
+      +'<div style="display:flex;align-items:center;gap:7px;margin-bottom:3px"><span style="font-size:16px">'+emoji+'</span>'
+        +'<span style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c9991a">'+city+'</span>'
+        +'<span style="font-size:10px;color:#7a6a55;margin-left:auto">'+n+' Night'+(n!==1?'s':'')+'</span></div>'
+      +'<div style="font-size:14px;font-weight:700;color:#1a1612">'+escAttr(name)+'</div>'
+      +'<div style="font-size:10px;color:#7a6a55;margin-top:2px">&#9733; '+stars+'-Star Hotel &middot; Daily breakfast</div>'
+    +'</div>';
+  };
+
+  return '<div style="width:760px;max-width:100%;margin:0 auto;background:#fff;font-family:DM Sans,Helvetica,Arial,sans-serif;box-shadow:0 12px 40px rgba(0,0,0,.3);border-radius:14px;overflow:hidden">'
+
+    // ── header band ──
+    +'<div style="background:linear-gradient(100deg,#1a1612,#3a2e1c);padding:16px 24px;display:flex;align-items:center;justify-content:space-between">'
+      +'<div style="display:flex;align-items:center;gap:12px">'
+        +'<img src="'+LOGO+'" style="height:48px;width:auto;object-fit:contain;border-radius:6px;background:#fff;padding:2px">'
+        +'<div><div style="font-family:Playfair Display,serif;font-size:20px;font-weight:800;color:#fff;line-height:1">AMANA</div>'
+          +'<div style="font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:#e0c068;margin-top:2px">Hajj &amp; Umrah Travel</div></div>'
+      +'</div>'
+      +'<div style="text-align:center;background:#c9991a;border-radius:10px;padding:7px 14px">'
+        +'<div style="font-size:13px;color:#1a1612;letter-spacing:.05em">'+starStr+'</div>'
+        +'<div style="font-size:11px;font-weight:800;color:#1a1612;letter-spacing:.06em;text-transform:uppercase">'+stars+' Star Hotel</div>'
+      +'</div>'
+    +'</div>'
+
+    // ── hero ──
+    +'<div style="position:relative;background:radial-gradient(circle at 70% 30%,#fbf6ec,#f3e7cf);padding:26px 24px 22px;overflow:hidden">'
+      +'<div style="position:absolute;right:-10px;top:-30px;font-size:170px;opacity:.07;line-height:1">&#128331;</div>'
+      +'<div style="position:relative">'
+        +'<div style="font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#c9991a;font-weight:700">Umrah Travel Package</div>'
+        +'<div style="font-family:Playfair Display,serif;font-size:46px;font-weight:800;color:#1a1612;line-height:1.05;margin-top:4px">'+escAttr(pkg)+'</div>'
+        +(tagline?'<div style="font-size:15px;color:#5a4a36;font-style:italic;margin-top:4px">'+escAttr(tagline)+'</div>':'')
+        +'<div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">'
+          +(dr?'<div style="background:#1a1612;color:#fff;border-radius:30px;padding:7px 16px;font-size:13px;font-weight:700">&#128197; '+dr+'</div>':'')
+          +(totalN>0?'<div style="background:#c9991a;color:#1a1612;border-radius:30px;padding:7px 16px;font-size:13px;font-weight:800">'+totalN+' Nights</div>':'')
+        +'</div>'
+      +'</div>'
+    +'</div>'
+
+    // ── hotels ──
+    +'<div style="padding:18px 24px 6px;display:flex;gap:12px">'
+      +hotelBox('&#127769;','Madinah',madHotel,madN)
+      +hotelBox('&#128332;','Makkah',makHotel,makN)
+    +'</div>'
+    +(othCity&&othN>0?'<div style="padding:0 24px 4px"><div style="background:#fff;border:1.5px dashed #c9991a;border-radius:10px;padding:8px 13px;font-size:13px;font-weight:600;color:#1a1612">&#128205; '+othN+' Night'+(othN!==1?'s':'')+' in '+escAttr(othCity)+'</div></div>':'')
+
+    // ── prices ──
+    +'<div style="padding:14px 24px;display:flex;gap:10px">'
+      +priceCol('Quad',quad,false)
+      +priceCol('Triple',tpl,false)
+      +priceCol('Double',dbl,true)
+    +'</div>'
+
+    // ── includes ──
+    +'<div style="margin:4px 24px 0;background:#f7f3ee;border-radius:12px;padding:14px 18px">'
+      +'<div style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#c9991a;text-align:center;margin-bottom:10px">Package Includes</div>'
+      +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px 16px">'
+        +incl('&#9992;&#65039;','Airfare tickets')
+        +incl('&#128645;','High-speed train')
+        +incl('&#128656;','Transportation')
+        +incl('&#128499;&#65039;','Saudi visa')
+        +incl('&#127976;','Hotels')
+        +incl('&#128331;','Guidance &amp; Ziyarat')
+      +'</div>'
+    +'</div>'
+
+    // ── footer band ──
+    +'<div style="background:linear-gradient(100deg,#1a1612,#3a2e1c);margin-top:18px;padding:15px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">'
+      +'<div style="color:#fff;font-size:14px;font-weight:700">&#9742; +1 (718) 491-6456 &nbsp;&middot;&nbsp; +1 (917) 297-2547</div>'
+      +'<div style="color:#e0c068;font-size:14px;font-weight:700">&#127760; www.bookumrahnow.com</div>'
+    +'</div>'
+
+  +'</div>';
+}
+function printOffer(){
+  recalc();
+  if(groups.length===0&&kids.length===0){alert('Add room groups or children first.');return;}
+  g('offerContent').innerHTML=buildOfferHTML();
+  showOverlay('offerOverlay');
+}
+function buildOfferHTML(){
+  var pkgName    = gv('pkgName')||'Umrah Trip';
+  var custName   = gv('custName');
+  var custPhone  = gv('custPhone');
+  var custAddress= gv('custAddress');
+  var madN       = gv('madN');
+  var makN       = gv('makN');
+  var madHotel   = gv('madHotelName');
+  var makHotel   = gv('makHotelName');
+  var madArr     = gv('madArrival');
+  var madArrTime = gv('madArrivalTime');
+  var madDep     = gv('madDeparture');
+  var madDepTime = gv('madDepartureTime');
+  var makArr     = gv('makArrival');
+  var makArrTime = gv('makArrivalTime');
+  var makDep     = gv('makDeparture');
+  var makDepTime = gv('makDepartureTime');
+  var fl1        = gv('flight1');
+  var fl2        = gv('flight2');
+  var fl3        = gv('flight3');
+  var airline    = gv('airline');
+  var ticket     = gf('ticket');
+  var visa       = gf('visa');
+  var train      = gf('train');
+  var bus        = gf('bus');
+  var othN       = gi('otherN');
+  var othCity    = gv('otherCity');
+  var today      = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  var uTypes     = groups.map(function(grp){return grp.type;}).filter(function(v,i,a){return a.indexOf(v)===i;});
+  var totRev     = groups.reduce(function(a,grp){return a+costForType(grp.type).salePP*grp.pax;},0);
+  var totPax     = groups.reduce(function(a,grp){return a+grp.pax;},0);
+
+  function li(icon, text){
+    return '<tr><td style="padding:1px 4px;vertical-align:top;width:14px;font-size:10px">'+icon+'</td>'
+          +'<td style="padding:1px 0;font-size:10px;color:#1a1612;line-height:1.2;text-align:left">'+text+'</td></tr>';
+  }
+  function sectionTitle(icon, title){
+    return '<div style="display:flex;align-items:center;gap:10px;margin:6px 0 4px">'
+      +'<div style="width:32px;height:32px;background:#1a1612;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px">'+icon+'</div>'
+      +'<div style="flex:1;height:1px;background:linear-gradient(90deg,#c9991a,transparent)"></div>'
+      +'<div style="font-family:Playfair Display,serif;font-size:14px;font-weight:700;color:#1a1612;white-space:nowrap;padding:0 8px">'+title+'</div>'
+      +'<div style="flex:1;height:1px;background:linear-gradient(270deg,#c9991a,transparent)"></div>'
+      +'</div>';
+  }
+
+  // Madinah program bullets
+  var madMode = gv('madArrivalMode')||'air';
+  var madArrLine = madMode==='train' ? 'Arrival at Madinah Train Station'
+                 : madMode==='bus'   ? 'Arrival in Madinah by Bus'
+                 :                      'Arrival at Madinah International Airport';
+  var madProg = [madArrLine,'Meet &amp; Assist','Transfer to hotel (air-conditioned)','Check-in upon arrival','Daily Breakfast','Mazarat Tour','Transportation to Makkah via Speed Train','Free Ihram &amp; gifts','Guidance'];
+  var makProg = ['Arrival at Makkah by Speed Train','Transfer to hotel','Daily Breakfast','Mazarat Tour','Umrah Performance','Free Zamzam &amp; gifts','Guidance','Transfer to airport'];
+
+  // Extra-city itinerary (Istanbul / Cairo / etc.) — free text, one item per line
+  var otherCityName = gv('otherCity')||'Extra City';
+  var otherItinItems = (gv('otherItin')||'').split(/\r?\n/).map(function(s){return s.trim();}).filter(function(s){return s;}).map(escAttr);
+  var otherNights = gi('otherN');
+  var othArr     = gv('otherArrival');
+  var othArrTime = gv('otherArrivalTime');
+  var othDep     = gv('otherDeparture');
+  var othDepTime = gv('otherDepartureTime');
+
+  function progList(items){
+    return '<table style="border-collapse:collapse;width:100%;text-align:left"><tbody>'
+      +items.map(function(x){return li('&#9654;',x);}).join('')+'</tbody></table>';
+  }
+
+  // Inclusions
+  var inclusions = [
+    ticket>0   ? 'Round-trip international airfare' : null,
+    madN>0     ? madN+' nights in Madinah'+(madHotel?' &mdash; '+madHotel:'') : null,
+    makN>0     ? makN+' nights in Makkah'+(makHotel?' &mdash; '+makHotel:'') : null,
+    'Daily breakfast at both hotels',
+    bus>0      ? 'All ground transportation' : null,
+    train>0    ? 'Madinah &rarr; Makkah Speed Train' : null,
+    visa>0     ? 'Saudi entry visa' : null,
+    'Mazarat (Ziyarat) tours in Madinah &amp; Makkah',
+    'Umrah performance guidance',
+    'Umrah gifts &amp; Zamzam water',
+    'Meet &amp; Assist services',
+  ].filter(function(x){return x;});
+
+  var inclHTML = '<table style="border-collapse:collapse;width:100%"><tbody>'
+    +inclusions.map(function(x){return li('&#10003;',x);}).join('')+'</tbody></table>';
+
+  // Price cards
+  var offerKids = childRows().filter(function(ch){return ch.count>0;});
+  var grandPax = groups.reduce(function(a,grp){return a+grp.pax;},0) + offerKids.reduce(function(a,ch){return a+ch.count;},0);
+  var grandTotal = groups.reduce(function(a,grp){return a+r5(costForType(grp.type).salePP*grp.pax);},0) + offerKids.reduce(function(a,ch){return a+r5(ch.price*ch.count);},0);
+  var priceCards = uTypes.map(function(type){
+    var c = costForType(type);
+    return '<div style="display:flex;align-items:center;background:#fff;border:1.5px solid '+(type==='Single'?'#2d6a4f':'#1a1612')+';border-radius:6px;margin-bottom:4px;overflow:hidden">'
+      +'<div style="background:'+(type==='Single'?'#2d6a4f':'#1a1612')+';padding:7px 14px;display:flex;align-items:center;gap:8px;min-width:160px">'
+        +'<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#f0d080;font-weight:700">'+type+' Room</div>'
+      +'</div>'
+      +'<div style="flex:1;display:flex;align-items:center;justify-content:space-around;padding:7px 14px">'
+        +'<div style="font-size:11px;color:#1a1612;font-weight:600">'+PPR[type]+' persons / room</div>'
+        +'<div style="width:1px;height:18px;background:#e0d5c8"></div>'
+        +'<div style="display:flex;align-items:baseline;gap:5px">'
+          +'<div style="font-family:Playfair Display,serif;font-size:1.2rem;font-weight:700;color:#1a1612">$'+r5(c.salePP)+'</div>'
+          +'<div style="font-size:11px;color:#555;font-weight:500">per person</div>'
+        +'</div>'
+      +'</div>'
+      +'</div>';
+  }).join('') + offerKids.map(function(ch){
+    return '<div style="display:flex;align-items:center;background:#fff;border:1.5px solid #7048a8;border-radius:6px;margin-bottom:4px;overflow:hidden">'
+      +'<div style="background:#7048a8;padding:7px 14px;display:flex;align-items:center;gap:8px;min-width:160px">'
+        +'<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#e9d5ff;font-weight:700">'+escAttr(ch.label)+'</div>'
+      +'</div>'
+      +'<div style="flex:1;display:flex;align-items:center;justify-content:space-around;padding:7px 14px">'
+        +'<div style="font-size:11px;color:#1a1612;font-weight:600">'+ch.count+' '+(ch.count>1?'children':'child')+'</div>'
+        +'<div style="width:1px;height:18px;background:#e0d5c8"></div>'
+        +'<div style="display:flex;align-items:baseline;gap:5px">'
+          +'<div style="font-family:Playfair Display,serif;font-size:1.2rem;font-weight:700;color:#1a1612">$'+r5(ch.price)+'</div>'
+          +'<div style="font-size:11px;color:#555;font-weight:500">per child</div>'
+        +'</div>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+
+  // Group table rows
+  var groupRows = groups.map(function(grp){
+    var c = costForType(grp.type);
+    return '<tr>'
+      +'<td style="padding:10px 14px;border-bottom:1px solid #f0e8de;font-size:13px;font-weight:600;color:#1a1612">'+grp.type+' Room</td>'
+      +'<td style="padding:10px 14px;border-bottom:1px solid #f0e8de;text-align:center;font-size:13px;color:#555">'+grp.pax+'</td>'
+      +'<td style="padding:10px 14px;border-bottom:1px solid #f0e8de;text-align:right;font-size:13px;font-weight:700;color:#2d6a4f">$'+r5(c.salePP)+'</td>'
+      +'<td style="padding:10px 14px;border-bottom:1px solid #f0e8de;text-align:right;font-size:14px;font-weight:700;color:#c9991a">$'+r5(c.salePP*grp.pax)+'</td>'
+      +'</tr>';
+  }).join('') + offerKids.map(function(ch){
+    return '<tr>'
+      +'<td style="padding:10px 14px;border-bottom:1px solid #f0e8de;font-size:13px;font-weight:600;color:#7048a8">'+escAttr(ch.label)+'</td>'
+      +'<td style="padding:10px 14px;border-bottom:1px solid #f0e8de;text-align:center;font-size:13px;color:#555">'+ch.count+'</td>'
+      +'<td style="padding:10px 14px;border-bottom:1px solid #f0e8de;text-align:right;font-size:13px;font-weight:700;color:#2d6a4f">$'+r5(ch.price)+'</td>'
+      +'<td style="padding:10px 14px;border-bottom:1px solid #f0e8de;text-align:right;font-size:14px;font-weight:700;color:#c9991a">$'+r5(ch.price*ch.count)+'</td>'
+      +'</tr>';
+  }).join('');
+
+  // Flight rows
+  var flRows = [fl1,fl2,fl3].filter(function(x){return x;}).map(function(x){
+    return '<tr><td style="padding:7px 12px;border-bottom:1px solid #f0e8de;font-size:12px;color:#333;display:flex;align-items:center;gap:8px">'
+      +'<span style="color:#c9991a;font-size:14px">✈</span>'+x+'</td></tr>';
+  }).join('');
+
+  // Train segments
+  var offerTrains = trains.filter(function(t){return (t.from||t.to||t.date||t.time);});
+
+  return ''
+  // OUTER
+  +'<div style="max-width:760px;margin:0 auto;font-family:DM Sans,sans-serif;background:#fff;border-radius:8px;">'
+
+  // ── HEADER BAND ──
+  +'<div style="background:#1a1612;padding:0">'
+    // top gold line
+    +'<div style="height:4px;background:linear-gradient(90deg,#c9991a,#f0d080,#c9991a)"></div>'
+    +'<div style="padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px">'
+      +'<img src="data:image/jpeg;base64,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" style="height:56px;width:auto;object-fit:contain;border:none;outline:none;display:block">'
+      +'<div style="text-align:center;flex:1">'
+        +'<div style="font-family:Playfair Display,serif;font-size:20px;font-weight:700;color:#fff;letter-spacing:-.01em">'+pkgName+'</div>'
+        +'<div style="height:2px;width:60px;background:linear-gradient(90deg,transparent,#c9991a,transparent);margin:8px auto"></div>'
+        +'<div style="font-size:11px;color:rgba(240,208,128,.7);letter-spacing:.2em;text-transform:uppercase">Umrah Travel Package</div>'
+      +'</div>'
+      +'<div style="text-align:right">'
+        +'<div style="font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px">Issue Date</div>'
+        +'<div style="font-size:12px;font-weight:600;color:#c9991a">'+today+'</div>'
+        +'<div style="margin-top:8px;padding:4px 10px;background:rgba(201,153,26,0.25);border:1px solid rgba(201,153,26,0.5);border-radius:4px;font-size:10px;font-weight:700;color:#f0d080;letter-spacing:.05em">⏳ Valid 48 Hours Only</div>'
+      +'</div>'
+    +'</div>'
+    // bottom gold line
+    +'<div style="height:2px;background:linear-gradient(90deg,transparent,#c9991a,transparent)"></div>'
+  +'</div>'
+
+  // ── CUSTOMER CARD ──
+  +(custName||custPhone||custAddress
+    ? '<div style="padding:8px 20px;background:linear-gradient(135deg,#fdf9f4,#f7f0e6);border-bottom:1px solid #e8ddd0">'
+      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">'
+        +'<div style="width:3px;height:18px;background:#c9991a;border-radius:2px"></div>'
+        +'<div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#333">Prepared For</div>'
+      +'</div>'
+      +'<div style="display:flex;gap:20px;flex-wrap:wrap">'
+        +(custName
+          ? '<div style="display:flex;align-items:center;gap:12px">'
+            +'<div style="width:32px;height:32px;background:#1a1612;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.2)">'
+              +'<span style="font-size:18px">&#128100;</span>'
+            +'</div>'
+            +'<div>'
+              +'<div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-bottom:2px">Customer Name</div>'
+              +'<div style="font-size:13px;font-weight:700;color:#1a1612">'+custName+'</div>'
+            +'</div>'
+          +'</div>' : '')
+        +(custPhone
+          ? '<div style="display:flex;align-items:center;gap:12px">'
+            +'<div style="width:32px;height:32px;background:#1a1612;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.2)">'
+              +'<span style="font-size:18px">&#128222;</span>'
+            +'</div>'
+            +'<div>'
+              +'<div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-bottom:2px">Phone Number</div>'
+              +'<div style="font-size:13px;font-weight:700;color:#1a1612">'+custPhone+'</div>'
+            +'</div>'
+          +'</div>' : '')
+        +(custAddress
+          ? '<div style="display:flex;align-items:center;gap:12px">'
+            +'<div style="width:32px;height:32px;background:#1a1612;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.2)">'
+              +'<span style="font-size:18px">&#127968;</span>'
+            +'</div>'
+            +'<div>'
+              +'<div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-bottom:2px">Address</div>'
+              +'<div style="font-size:15px;font-weight:600;color:#1a1612">'+custAddress+'</div>'
+            +'</div>'
+          +'</div>' : '')
+      +'</div>'
+    +'</div>'
+    : '')
+
+  // ── TRIP SUMMARY STRIP ──
+  +'<div style="background:#f7f3ee;padding:4px 20px;display:flex;gap:0;border-bottom:1px solid #e8ddd0">'
+    +(madArr?'<div style="flex:1;text-align:center;padding:4px 6px;border-right:1px solid #e0d5c8"><div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.1em;font-weight:600">Madinah Arrival</div><div style="font-size:11px;font-weight:700;color:#1a1612;margin-top:2px">'+madArr+'</div>'+(madArrTime?'<div style="font-size:11px;color:#c9991a;margin-top:2px">&#9200; '+madArrTime+'</div>':'')+'</div>':'')
+    +(madN?'<div style="flex:1;text-align:center;padding:4px 6px;border-right:1px solid #e0d5c8"><div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.1em;font-weight:600">Madinah</div><div style="font-size:11px;font-weight:700;color:#c9991a;margin-top:2px">'+madN+' Nights</div></div>':'')
+    +(madDep?'<div style="flex:1;text-align:center;padding:4px 6px;border-right:1px solid #e0d5c8"><div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.1em;font-weight:600">Madinah Departure</div><div style="font-size:11px;font-weight:700;color:#1a1612;margin-top:2px">'+madDep+'</div>'+(madDepTime?'<div style="font-size:11px;color:#c9991a;margin-top:2px">&#9200; '+madDepTime+'</div>':'')+'</div>':'')
+    +(makArr?'<div style="flex:1;text-align:center;padding:4px 6px;border-right:1px solid #e0d5c8"><div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.1em;font-weight:600">Makkah Arrival</div><div style="font-size:11px;font-weight:700;color:#1a1612;margin-top:2px">'+makArr+'</div>'+(makArrTime?'<div style="font-size:11px;color:#c9991a;margin-top:2px">&#9200; '+makArrTime+'</div>':'')+'</div>':'')
+    +(makN?'<div style="flex:1;text-align:center;padding:4px 6px;border-right:1px solid #e0d5c8"><div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.1em;font-weight:600">Makkah</div><div style="font-size:11px;font-weight:700;color:#c9991a;margin-top:2px">'+makN+' Nights</div></div>':'')
+    +(makDep?'<div style="flex:1;text-align:center;padding:8px"><div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.1em;font-weight:600">Return</div><div style="font-size:11px;font-weight:700;color:#1a1612;margin-top:2px">'+makDep+'</div>'+(makDepTime?'<div style="font-size:11px;color:#c9991a;margin-top:2px">&#9200; '+makDepTime+'</div>':'')+'</div>':'')
+  +'</div>'
+
+  // ── BODY ──
+  +'<div style="padding:4px 20px 8px">'
+
+    // GROUP BREAKDOWN
+    +((groups.length+offerKids.length)>1 ? sectionTitle('&#128101;','Group Breakdown')
+      +'<div style="border-radius:8px;overflow:hidden;border:1.5px solid #e8ddd0">'
+        +'<table style="width:100%;border-collapse:collapse">'
+          +'<thead><tr style="background:#1a1612">'
+            +'<th style="padding:10px 14px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#f0d080;font-weight:600">Room Type</th>'
+            +'<th style="padding:10px 14px;text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#f0d080;font-weight:600">Persons</th>'
+            +'<th style="padding:10px 14px;text-align:right;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#f0d080;font-weight:600">Price/Person</th>'
+            +'<th style="padding:10px 14px;text-align:right;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#f0d080;font-weight:600">Total</th>'
+          +'</tr></thead>'
+          +'<tbody>'+groupRows
+            +'<tr style="background:#1a1612"><td style="padding:11px 14px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#f0d080">Grand Total</td>'
+              +'<td style="padding:11px 14px;text-align:center;font-size:13px;font-weight:700;color:#fff">'+grandPax+'</td>'
+              +'<td style="padding:11px 14px"></td>'
+              +'<td style="padding:11px 14px;text-align:right;font-size:15px;font-weight:800;color:#f0d080">$'+f(grandTotal)+'</td></tr>'
+          +'</tbody>'
+          +'</table>'
+      +'</div>' : '')
+
+    // HOTELS
+    +sectionTitle('&#127970;','Accommodation')
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px">'
+      +(madN>0?'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:#1a1612;padding:6px 10px;display:flex;align-items:center;gap:6px">'
+          +'<span style="font-size:18px">&#127769;</span>'
+          +'<div><div style="font-size:10px;color:#f0d080;letter-spacing:.1em;text-transform:uppercase">Madinah</div>'
+          +'<div style="font-size:12px;font-weight:600;color:#fff">'+madN+' Nights</div></div>'
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'
+          +(madHotel?'<div style="font-size:13px;font-weight:700;color:#1a1612;margin-bottom:4px">'+madHotel+'</div>':'')
+          +'<div style="font-size:11px;color:#333">&#11088; 5-Star Hotel</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#127963; Near Prophet&#39;s Mosque</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#9749; Daily breakfast included</div>'
+        +'</div>'
+      +'</div>':'')
+      +(makN>0?'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:#1a1612;padding:6px 10px;display:flex;align-items:center;gap:6px">'
+          +'<span style="font-size:18px">&#128332;</span>'
+          +'<div><div style="font-size:10px;color:#f0d080;letter-spacing:.1em;text-transform:uppercase">Makkah</div>'
+          +'<div style="font-size:12px;font-weight:600;color:#fff">'+makN+' Nights</div></div>'
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'
+          +(makHotel?'<div style="font-size:13px;font-weight:700;color:#1a1612;margin-bottom:4px">'+makHotel+'</div>':'')
+          +'<div style="font-size:11px;color:#333">&#11088; 5-Star Hotel</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#127963; Al Haram Courtyard</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#9749; Daily breakfast included</div>'
+        +'</div>'
+      +'</div>':'')
+    +'</div>'
+
+    // ITINERARY
+    +'<div style="page-break-before:auto"></div>'+sectionTitle('&#128506;','Itinerary')
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px">'
+      +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:linear-gradient(90deg,#1a1612,#2d2419);padding:10px 14px">'
+          +'<div style="font-size:11px;font-weight:700;color:#f0d080;text-transform:uppercase;letter-spacing:.1em">&#127769; Madinah Program</div>'
+          +(madArr?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Arrival: '+madArr+(madArrTime?' &nbsp;&#9200; '+madArrTime:'')+'</div>':'')+(madDep?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Departure: '+madDep+(madDepTime?' &nbsp;&#9200; '+madDepTime:'')+'</div>':'')
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'+progList(madProg)+'</div>'
+      +'</div>'
+      +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:linear-gradient(90deg,#1a1612,#2d2419);padding:10px 14px">'
+          +'<div style="font-size:11px;font-weight:700;color:#f0d080;text-transform:uppercase;letter-spacing:.1em">&#128332; Makkah Program</div>'
+          +(makArr?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Arrival: '+makArr+(makArrTime?' &nbsp;&#9200; '+makArrTime:'')+'</div>':'')+(makDep?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Departure: '+makDep+(makDepTime?' &nbsp;&#9200; '+makDepTime:'')+'</div>':'')
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'+progList(makProg)+'</div>'
+      +'</div>'
+    +'</div>'
+
+    // EXTRA CITY ITINERARY (Istanbul / Cairo / etc.)
+    +(otherItinItems.length
+      ? '<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden;margin-bottom:4px">'
+          +'<div style="background:linear-gradient(90deg,#1a1612,#2d2419);padding:10px 14px">'
+            +'<div style="font-size:11px;font-weight:700;color:#f0d080;text-transform:uppercase;letter-spacing:.1em">&#128205; '+escAttr(otherCityName)+' Program</div>'
+            +(otherNights>0?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">'+otherNights+' Night'+(otherNights>1?'s':'')+'</div>':'')
+            +(othArr?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Arrival: '+escAttr(othArr)+(othArrTime?' &nbsp;&#9200; '+escAttr(othArrTime):'')+'</div>':'')
+            +(othDep?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Departure: '+escAttr(othDep)+(othDepTime?' &nbsp;&#9200; '+escAttr(othDepTime):'')+'</div>':'')
+          +'</div>'
+          +'<div style="padding:6px 10px;background:#fdf9f4">'+progList(otherItinItems)+'</div>'
+        +'</div>'
+      : '')
+
+    // FLIGHTS
+    +(fl1||fl2||fl3
+      ? sectionTitle('&#9992;','Flights &mdash; '+(airline||''))
+        +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+          +'<div style="background:#1a1612;padding:8px 14px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#f0d080;font-weight:600">'+(airline||'')+'</div>'
+          +'<div style="background:#fdf9f4">'
+          +[fl1,fl2,fl3].filter(function(x){return x;}).map(function(x,i){
+            return '<div style="padding:6px 10px;border-bottom:1px solid #e8ddd0;display:flex;align-items:center;gap:8px">'
+              +'<div style="width:24px;height:24px;background:#c9991a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:#fff">'+(i+1)+'</div>'
+              +'<div style="font-size:12px;color:#1a1612;font-weight:500">'+x+'</div>'
+              +'</div>';
+          }).join('')
+          +'</div>'
+        +'</div>'
+      : '')
+
+    // TRAINS
+    +(offerTrains.length
+      ? sectionTitle('&#128646;','Trains')
+        +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+          +'<div style="background:#fdf9f4">'
+          +offerTrains.map(function(t,i){
+            var route=(t.from||'&mdash;')+' &nbsp;&#8594;&nbsp; '+(t.to||'&mdash;');
+            var when=[t.date,t.time].filter(function(x){return x;}).join(' &nbsp;&#9200;&nbsp; ');
+            return '<div style="padding:6px 10px;border-bottom:1px solid #e8ddd0;display:flex;align-items:center;gap:8px">'
+              +'<div style="width:24px;height:24px;background:#2d6a4f;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:#fff">'+(i+1)+'</div>'
+              +'<div style="font-size:12px;color:#1a1612;font-weight:600">'+route+(when?'<span style="color:#888;font-weight:400;font-size:11px"> &nbsp;&#183;&nbsp; '+when+'</span>':'')+'</div>'
+              +'</div>';
+          }).join('')
+          +'</div>'
+        +'</div>'
+      : '')
+
+    // INCLUSIONS
+    +sectionTitle('&#10003;','What&#39;s Included')
+    +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+      +'<div style="display:grid;grid-template-columns:1fr 1fr;background:#fdf9f4">'
+      +inclusions.map(function(x,i){
+        return '<div style="padding:3px 10px;border-bottom:1px solid #e8ddd0;'+(i%2===0?'border-right:1px solid #e8ddd0':'')+'display:flex;align-items:center;gap:6px">'
+          +'<span style="color:#2d6a4f;font-weight:700;flex-shrink:0;font-size:11px">&#10003;</span>'
+          +'<span style="font-size:10px;color:#1a1612;line-height:1.3">'+x+'</span>'
+          +'</div>';
+      }).join('')
+      +'</div>'
+    +'</div>'
+
+    // PACKAGE RATE
+    +sectionTitle('&#128176;','Package Rate')
+    +'<div style="margin-bottom:4px">'+priceCards+'</div>'
+    +'<div style="margin:8px 0 4px;background:linear-gradient(100deg,#1a1612,#3a2e1c);border-radius:8px;padding:12px 18px;display:flex;align-items:center;justify-content:space-between">'
+      +'<div><div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#f0d080;font-weight:700">Grand Total</div>'
+        +'<div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:2px">'+grandPax+' traveler'+(grandPax!==1?'s':'')+' &mdash; all rooms'+(offerKids.length?' &amp; children':'')+' included</div></div>'
+      +'<div style="font-family:Playfair Display,serif;font-size:28px;font-weight:800;color:#fff">$'+f(grandTotal)+'</div>'
+    +'</div>'
+
+
+    // IMPORTANT NOTES
+    +sectionTitle('&#128276;','Important Notes')
+    +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+    +['A non-refundable deposit of 50% is required at the time of booking.',
+      'If the departure date is within 30 days of booking, 100% payment is required at the time of booking.',
+      'If the departure date is between 31 and 90 days from booking, the remaining balance must be paid within 14 days from the booking date.',
+      'If the departure date is more than 90 days from booking, the remaining balance must be paid within 30 days from the booking date.',
+      '<strong>Note:</strong> Airfare and hotels are booked and paid in full upon deposit. Failure to pay the remaining balance by the due date risks cancellation by our suppliers, not by us.',
+      'Some airfare components may be non-refundable and non-changeable.',
+      'Any changes after confirmation are subject to availability and may incur additional charges.',
+      'Amana Travel acts as an agent and is not liable for airline delays or schedule changes.']
+    .map(function(n,i){
+      return '<div style="padding:3px 10px;border-bottom:1px solid #e8ddd0;display:flex;align-items:center;gap:8px;background:'+(i%2===0?'#fdf9f4':'#fff')+'">'
+        +'<div style="width:16px;height:16px;background:#c9991a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;font-weight:700;color:#1a1612">'+(i+1)+'</div>'
+        +'<div style="font-size:10px;color:#1a1612;line-height:1.3">'+n+'</div>'
+        +'</div>';
+    }).join('')
+    +'</div>'
+
+    // ── PAYMENT SECTION ──
+    +sectionTitle('&#128179;','Payment Options')
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">'
+
+    // Zelle Business
+    +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+      +'<div style="background:linear-gradient(90deg,#6B2D8B,#4A1F6B);padding:6px 10px;display:flex;align-items:center;gap:6px">'
+        +'<span style="font-size:18px">💜</span>'
+        +'<div style="font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.1em">Zelle — Business Account</div>'
+      +'</div>'
+      +'<div style="padding:6px 10px;background:#fdf9f4">'
+        +'<div style="font-size:12px;font-weight:700;color:#1a1612;margin-bottom:3px">Amana Travel Inc.</div>'
+        +'<div style="font-size:11px;color:#555;margin-bottom:2px">&#128241; Zelle ID: <strong>mohamm235@gmail.com</strong></div>'
+      +'</div>'
+    +'</div>'
+
+    // Chase Bank
+    +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+      +'<div style="background:linear-gradient(90deg,#003087,#001F5C);padding:6px 10px;display:flex;align-items:center;gap:6px">'
+        +'<span style="font-size:18px">🏦</span>'
+        +'<div style="font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.1em">Chase Bank — Wire / Deposit</div>'
+      +'</div>'
+      +'<div style="padding:6px 10px;background:#fdf9f4">'
+        +'<div style="font-size:12px;font-weight:700;color:#1a1612;margin-bottom:4px">Amana Travel Inc.</div>'
+        +'<div style="font-size:10px;color:#555;margin-bottom:2px">507 68th St, Brooklyn, NY 11220</div>'
+        +'<div style="font-size:11px;color:#333;margin-top:4px;display:flex;justify-content:space-between;border-top:1px solid #e8ddd0;padding-top:6px"><span style="color:#8a7a6a">Account #</span><strong>672159107</strong></div>'
+        +'<div style="font-size:11px;color:#333;margin-top:2px;display:flex;justify-content:space-between"><span style="color:#8a7a6a">Routing #</span><strong>021000021</strong></div>'
+      +'</div>'
+    +'</div>'
+
+  +'</div>' // end body
+
+  // ── FOOTER ──
+  +'<div style="background:#1a1612;padding:8px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">'
+    +'<div>'
+      +'<div style="font-family:Playfair Display,serif;font-size:14px;font-weight:700;color:#f0d080">Amana Travel Inc.</div>'
+      +'<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px">507 68th St, Brooklyn, NY 11220 &nbsp;&#124;&nbsp; 718-491-6456</div>'
+    +'</div>'
+    +'<div style="text-align:right">'
+      +'<div style="font-size:11px;color:#c9991a">www.amanatravel.com</div>'
+      +'<div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:2px">Thank you for choosing Amana Travel</div>'
+    +'</div>'
+  +'</div>'
+
+  +'</div>'; // end outer
+}
+
+function printCostSheet(){
+  recalc();
+  if(groups.length===0&&kids.length===0){alert('Add room groups or children first.');return;}
+  g('costContent').innerHTML=buildCostHTML();
+  showOverlay('costOverlay');
+}
+function buildCostHTML(){
+  var pkgName=gv('pkgName')||'Umrah Package',pkgDates=gv('pkgDates');
+  var madN=gv('madN'),makN=gv('makN'),othN=gv('otherN'),othCity=gv('otherCity')||'Other City';
+  var madHotel=gv('madHotelName'),makHotel=gv('makHotelName'),margin=gv('numMargin');
+  var today=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  var totPax=0,totCost=0,totRev=0,totProfit=0;
+  groups.forEach(function(grp){var c=costForType(grp.type);totPax+=grp.pax;totCost+=c.totPP*grp.pax;totRev+=c.salePP*grp.pax;totProfit+=c.profPP*grp.pax;});
+  var costKids=childRows().filter(function(ch){return ch.count>0;});
+  costKids.forEach(function(ch){totPax+=ch.count;totCost+=ch.cost*ch.count;totRev+=ch.price*ch.count;totProfit+=ch.profit*ch.count;});
+  var uTypes=groups.map(function(grp){return grp.type;}).filter(function(v,i,a){return a.indexOf(v)===i;});
+  var typeBlocks=uTypes.map(function(type){
+    var c=costForType(type),ppr=PPR[type];
+    var grpPax=groups.filter(function(grp){return grp.type===type;}).reduce(function(a,grp){return a+grp.pax;},0);
+    var items=[
+      {l:'Madinah Hotel ('+c.madRoomSAR+' SAR x '+madN+' nights / '+ppr+')',v:c.madPP,hide:c.madPP===0},
+      {l:'Makkah Hotel ('+c.makRoomSAR+' SAR x '+makN+' nights / '+ppr+')', v:c.makPP,hide:c.makPP===0},
+      {l:othCity+' ('+othN+' nights/pax)',v:c.othPP,hide:c.othPP===0},
+      {l:'Airline Ticket',v:c.ticket,hide:c.ticket===0},{l:'Saudi Visa',v:c.visa,hide:c.visa===0},
+      {l:'Haramain Train',v:c.train,hide:c.train===0},{l:'Bus/Transport',v:c.bus,hide:c.bus===0},
+      {l:'Operations',v:c.ops,hide:c.ops===0},{l:'Commission',v:c.comm,hide:c.comm===0},
+      {l:'Other Fees',v:c.otherF,hide:c.otherF===0},
+    ].filter(function(r){return !r.hide;});
+    return '<div style="margin-bottom:16px"><div style="background:'+TYPE_COLORS[type]+';color:#fff;padding:7px 12px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">'+type+' Room - '+ppr+' Persons/Room - '+grpPax+' Passengers</div>'
+      +'<table><thead><tr><th>Cost Item</th><th class="r">Per Person</th><th class="r">x '+grpPax+' Pax</th><th class="r">Group Total</th></tr></thead><tbody>'
+      +items.map(function(r){return '<tr><td style="color:#555">'+r.l+'</td><td class="r">$'+f(r.v)+'</td><td class="r">'+grpPax+'</td><td class="r">$'+f(r.v*grpPax)+'</td></tr>';}).join('')
+      +'<tr class="subtot"><td>Hotel Subtotal</td><td class="r">$'+f(c.hotPP)+'</td><td class="r">'+grpPax+'</td><td class="r">$'+f(c.hotPP*grpPax)+'</td></tr>'
+      +'<tr class="subtot"><td>Services Subtotal</td><td class="r">$'+f(c.svcPP)+'</td><td class="r">'+grpPax+'</td><td class="r">$'+f(c.svcPP*grpPax)+'</td></tr>'
+      +'<tr class="totrow"><td>TOTAL COST</td><td class="r">$'+f(c.totPP)+'</td><td class="r">'+grpPax+'</td><td class="r">$'+f(c.totPP*grpPax)+'</td></tr>'
+      +'<tr class="salerow"><td>SALES PRICE ('+margin+'% margin)</td><td class="r">$'+f(c.salePP)+'</td><td class="r">'+grpPax+'</td><td class="r">$'+f(c.salePP*grpPax)+'</td></tr>'
+      +'<tr class="profrow"><td>PROFIT</td><td class="r">$'+f(c.profPP)+'</td><td class="r">'+grpPax+'</td><td class="r">$'+f(c.profPP*grpPax)+'</td></tr>'
+      +'</tbody></table></div>';
+  }).join('') + (costKids.length
+    ? '<div style="margin-bottom:16px"><div style="background:#7048a8;color:#fff;padding:7px 12px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Children &amp; Infants - '+costKids.reduce(function(a,ch){return a+ch.count;},0)+' Passengers</div>'
+      +'<table><thead><tr><th>Type</th><th class="r">Count</th><th class="r">Cost/child</th><th class="r">Price/child</th><th class="r">Profit/child</th><th class="r">Group Total</th></tr></thead><tbody>'
+      +costKids.map(function(ch){return '<tr><td style="color:#555">'+escAttr(ch.label)+'</td><td class="r">'+ch.count+'</td><td class="r">$'+f(ch.cost)+'</td><td class="r">$'+f(ch.price)+'</td><td class="r" style="color:#2d6a4f">$'+f(ch.profit)+'</td><td class="r" style="color:#c9991a">$'+f(ch.price*ch.count)+'</td></tr>';}).join('')
+      +'</tbody></table></div>'
+    : '');
+  var grandRows=groups.map(function(grp){var c=costForType(grp.type);return '<tr><td>'+grp.type+'</td><td class="r">'+grp.pax+'</td><td class="r">$'+f(c.totPP)+'</td><td class="r">$'+f(c.salePP)+'</td><td class="r" style="color:#2d6a4f">$'+f(c.profPP)+'</td><td class="r">$'+f(c.totPP*grp.pax)+'</td><td class="r" style="color:#c9991a">$'+f(c.salePP*grp.pax)+'</td><td class="r" style="color:#2d6a4f">$'+f(c.profPP*grp.pax)+'</td></tr>';}).join('')
+    + costKids.map(function(ch){return '<tr><td style="color:#7048a8">'+escAttr(ch.label)+'</td><td class="r">'+ch.count+'</td><td class="r">$'+f(ch.cost)+'</td><td class="r">$'+f(ch.price)+'</td><td class="r" style="color:#2d6a4f">$'+f(ch.profit)+'</td><td class="r">$'+f(ch.cost*ch.count)+'</td><td class="r" style="color:#c9991a">$'+f(ch.price*ch.count)+'</td><td class="r" style="color:#2d6a4f">$'+f(ch.profit*ch.count)+'</td></tr>';}).join('');
+  return '<div style="max-width:820px;margin:0 auto;font-family:DM Sans,sans-serif;font-size:13px">'
+    +'<div class="conf-hdr" style="border-radius:8px 8px 0 0">'
+    +'<div><div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:4px">Internal Cost Sheet - Confidential</div>'
+    +'<div style="font-family:Playfair Display,serif;font-size:1.3rem;font-weight:700">'+pkgName+'</div>'
+    +(pkgDates?'<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px">'+pkgDates+'</div>':'')
+    +(madHotel?'<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:4px">&#127769; Madinah: '+madHotel+'</div>':'')
+    +(makHotel?'<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:2px">&#128332; Makkah: '+makHotel+'</div>':'')
+    +'</div><div style="text-align:right"><div class="conf-badge">&#128274; Internal Only</div>'
+    +'<div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:6px">'+today+'</div>'
+    +'<div style="font-size:10px;color:rgba(255,255,255,.35)">Rate: 1 USD = '+SAR.toFixed(2)+' SAR - Margin: '+margin+'%</div>'
+    +'</div></div>'
+    +'<div class="kpi-row"><div class="kpi"><div class="kpi-l">Total Passengers</div><div class="kpi-v">'+totPax+'</div></div>'
+    +'<div class="kpi"><div class="kpi-l">Total Group Cost</div><div class="kpi-v" style="color:#5c4a35">$'+f(totCost)+'</div></div>'
+    +'<div class="kpi"><div class="kpi-l">Total Revenue</div><div class="kpi-v" style="color:#c9991a">$'+f(totRev)+'</div></div>'
+    +'<div class="kpi"><div class="kpi-l">Total Profit</div><div class="kpi-v" style="color:#2d6a4f">$'+f(totProfit)+'</div></div></div>'
+    +'<div class="section-title">Cost and Pricing by Room Type</div>'
+    +'<div class="body-pad">'+typeBlocks+'</div>'
+    +'<div class="section-title">Grand Total</div>'
+    +'<div class="body-pad"><table><thead><tr><th>Room Type</th><th class="r">Persons</th><th class="r">Cost/pp</th><th class="r">Price/pp</th><th class="r">Profit/pp</th><th class="r">Group Cost</th><th class="r">Group Revenue</th><th class="r">Group Profit</th></tr></thead>'
+    +'<tbody>'+grandRows+'<tr class="totrow"><td>TOTAL</td><td class="r">'+totPax+'</td><td></td><td></td><td></td><td class="r">$'+f(totCost)+'</td><td class="r">$'+f(totRev)+'</td><td class="r">$'+f(totProfit)+'</td></tr></tbody></table>'
+    +'<div style="margin-top:12px;background:#fdf5dc;border:1px solid #e8d5a3;border-radius:5px;padding:10px 14px;font-size:11px;color:#8a6800;line-height:1.7">'
+    +'<strong>Profit margin:</strong> '+(totCost>0?(totProfit/totCost*100).toFixed(2):0)+'% | <strong>Exchange rate:</strong> 1 USD = '+SAR.toFixed(2)+' SAR'
+    +'</div></div></div>';
+}
+
+function copyQuote(){
+  if(groups.length===0&&kids.length===0){alert('Nothing to copy.');return;}
+  var name=gv('pkgName')||'Package';
+  var txt=name+'\n'+'------------------------------------\n';
+  groups.forEach(function(grp){var c=costForType(grp.type);txt+=grp.type+' Room: '+grp.pax+' pax -> $'+f(c.salePP)+'/person ($'+f(c.salePP*grp.pax)+' total)\n';});
+  var ckids=childRows().filter(function(ch){return ch.count>0;});
+  ckids.forEach(function(ch){txt+=ch.label+': '+ch.count+' -> $'+f(ch.price)+'/child ($'+f(ch.price*ch.count)+' total)\n';});
+  var tot=groups.reduce(function(a,grp){return a+costForType(grp.type).salePP*grp.pax;},0)
+         +ckids.reduce(function(a,ch){return a+ch.price*ch.count;},0);
+  txt+='------------------------------------\nGroup Total: $'+f(tot);
+  navigator.clipboard.writeText(txt).then(function(){alert('Copied!');}).catch(function(){alert('Copy failed.');});
+}
+
+renderGroups();
+renderTrains();
+renderChildren();
+
+// ── MAWASIM EXTENSION LISTENER ──
+if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.onMessage) {
+  try {
+    chrome.runtime.onMessage.addListener(function(msg) {
+      if (msg.type === 'MAWASIM_PRICES') { applyMawasimPrices(msg.data); }
+    });
+  } catch(e) {}
+}
+
+function checkMawasimStorage() {
+  try {
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+      chrome.storage.local.get('amana_mawasim_prices', function(data) {
+        if (data && data.amana_mawasim_prices) {
+          var btn = document.getElementById('mawasim-load-btn');
+          if (btn) btn.style.display = 'block';
+        }
+      });
+    }
+  } catch(e) {}
+}
+setInterval(checkMawasimStorage, 3000);
+
+window.loadMawasimPrices = function() {
+  try {
+    chrome.storage.local.get('amana_mawasim_prices', function(data) {
+      if (data && data.amana_mawasim_prices) {
+        applyMawasimPrices(data.amana_mawasim_prices);
+        chrome.storage.local.remove('amana_mawasim_prices');
+        document.getElementById('mawasim-load-btn').style.display = 'none';
+      } else {
+        alert('No Mawasim prices found. Use the extension panel on portal.mawasim.com first.');
+      }
+    });
+  } catch(e) {
+    alert('Extension not connected. Make sure the Mawasim extension is installed in Chrome.');
+  }
+};
+
+window.applyMawasimPrices = function(data) {
+  var rate = SAR || 3.70;
+  var map = {
+    madDblSAR:'madDbl', madTplSAR:'madTpl', madQudSAR:'madQud',
+    makDblSAR:'makDbl', makTplSAR:'makTpl', makQudSAR:'makQud'
+  };
+  var applied = 0;
+  Object.keys(map).forEach(function(key) {
+    if (data[key] && data[key] > 0) {
+      var prefix = map[key];
+      var sarEl = document.getElementById(prefix+'SAR');
+      var usdEl = document.getElementById(prefix+'USD');
+      if (sarEl) { sarEl.value = data[key]; applied++; }
+      if (usdEl) { usdEl.value = (data[key] / rate).toFixed(2); }
+      updateNote(prefix.replace('mad','mad').replace('mak','mak'));
+    }
+  });
+  if (data.trainSAR > 0) {
+    var el = document.getElementById('train');
+    if (el) { el.value = (data.trainSAR / rate).toFixed(2); applied++; }
+  }
+  if (data.visaSAR > 0) {
+    var el = document.getElementById('visa');
+    if (el) { el.value = (data.visaSAR / rate).toFixed(2); applied++; }
+  }
+  updateAllNotes();
+  recalc();
+  var status = document.getElementById('mawasim-status');
+  if (status) {
+    status.style.display = 'block';
+    status.textContent = '✅ ' + applied + ' prices loaded from Mawasim!';
+    setTimeout(function() { status.style.display = 'none'; }, 5000);
+  }
+};
+
+</script>
+
+<!-- ══ FULLSCREEN INVOICE OVERLAY ══ -->
+<div id="invoiceOverlay" style="display:none;position:fixed;inset:0;background:#ececec;z-index:500;flex-direction:column;overflow-y:auto">
+  <div style="position:sticky;top:0;background:#1a1612;padding:.7rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;z-index:10">
+    <div style="font-family:Playfair Display,serif;color:#e8ddc7;font-size:1rem">Invoice <span style="color:#c9991a;font-size:.7rem;margin-left:.4rem">auto-filled from pricing</span></div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;font-family:DM Sans,sans-serif">
+      <label style="color:#bbb;font-size:.62rem;display:flex;flex-direction:column;gap:2px">No.<input id="invNo" oninput="renderInvoiceDoc()" style="width:130px;padding:.3rem .4rem;border-radius:4px;border:1px solid #444;background:#241f18;color:#f2e6c2;font-size:.72rem"></label>
+      <label style="color:#bbb;font-size:.62rem;display:flex;flex-direction:column;gap:2px">Issue<input id="invIssue" type="date" oninput="renderInvoiceDoc()" style="padding:.28rem .4rem;border-radius:4px;border:1px solid #444;background:#241f18;color:#eee;font-size:.72rem"></label>
+      <label style="color:#bbb;font-size:.62rem;display:flex;flex-direction:column;gap:2px">Due<input id="invDue" type="date" oninput="renderInvoiceDoc()" style="padding:.28rem .4rem;border-radius:4px;border:1px solid #444;background:#241f18;color:#eee;font-size:.72rem"></label>
+      <label style="color:#bbb;font-size:.62rem;display:flex;flex-direction:column;gap:2px">Deposit $<input id="invDeposit" type="number" min="0" step="0.01" value="0" oninput="renderInvoiceDoc()" style="width:96px;padding:.3rem .4rem;border-radius:4px;border:1px solid #444;background:#241f18;color:#eee;font-size:.72rem"></label>
+      <label style="color:#bbb;font-size:.62rem;display:flex;flex-direction:column;gap:2px">Discount $<input id="invDiscount" type="number" min="0" step="0.01" value="0" oninput="renderInvoiceDoc()" style="width:96px;padding:.3rem .4rem;border-radius:4px;border:1px solid #444;background:#241f18;color:#eee;font-size:.72rem"></label>
+      <button onclick="printInvoiceDo()" style="align-self:flex-end;background:var(--gold);color:var(--ink);border:none;padding:.5rem 1.1rem;border-radius:4px;font-size:.78rem;font-weight:700;cursor:pointer">🖨 Print / Save PDF</button>
+      <button onclick="closeOverlay('invoiceOverlay')" style="align-self:flex-end;background:rgba(255,255,255,.1);color:#e8ddc7;border:1px solid rgba(255,255,255,.2);padding:.5rem 1rem;border-radius:4px;font-size:.78rem;cursor:pointer">✕ Close</button>
+    </div>
+  </div>
+  <div style="max-width:800px;margin:24px auto;padding:0 1rem 5rem;width:100%">
+    <div id="invoiceContent"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var INV_NOTES = [
+    "1. A non-refundable deposit of 50% is required at the time of booking.",
+    "2. If the departure date is within 30 days of booking, 100% payment is required at the time of booking.",
+    "3. If the departure date is between 31 and 90 days from booking, the remaining balance must be paid within 14 days from the booking date.",
+    "4. If the departure date is more than 90 days from booking, the remaining balance must be paid within 30 days from the booking date.",
+    "5. Airfare and hotels are booked and paid in full upon deposit. Failure to pay the remaining balance by the due date risks cancellation by our suppliers, not by us.",
+    "6. Some airfare components may be non-refundable and non-changeable.",
+    "7. Any changes after confirmation are subject to availability and may incur additional charges.",
+    "8. Amana Travel acts as an agent and is not liable for airline delays or schedule changes."
+  ].join("\n");
+
+  function m2(n){ return "$"+(Number(n)||0).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  function m0(n){ return "$"+Math.round(Number(n)||0).toLocaleString("en-US"); }
+  function fmtD(v){ if(!v) return ""; var d=new Date(v+"T00:00:00"); if(isNaN(d)) return v; return d.toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"}); }
+
+  function invItems(){
+    var items=[];
+    var madN=gv('madN'), makN=gv('makN');
+    var madHotel=gv('madHotelName')||'Madinah hotel', makHotel=gv('makHotelName')||'Makkah hotel';
+    var base='<b>'+madN+' Nights Madinah</b> — '+madHotel+'<br><b>'+makN+' Nights Makkah</b> — '+makHotel+'<br>Including Flights · High-Speed Train · Visa · Transfers · Guidance';
+    groups.forEach(function(grp){
+      var c=costForType(grp.type); var unit=r5(c.salePP);
+      items.push({tag:'Umrah Package · '+grp.type+' Room',
+        desc:base+' · '+c.ppr+' persons per room', qty:grp.pax, unit:unit});
+    });
+    childRows().forEach(function(ch){
+      if(ch.count>0) items.push({tag:(ch.label||'Child'),
+        desc:'Umrah package · child rate · sharing room with family', qty:ch.count, unit:r5(ch.price)});
+    });
+    return items;
+  }
+
+  function invPeek(year){ var n=0; try{ n=parseInt(localStorage.getItem('amana_inv_counter')||'0',10)||0; }catch(e){} return 'AMT-'+year+'-'+String(n+1).padStart(4,'0'); }
+
+  window.buildInvoiceHTML=function(){
+    var name=gv('custName')||'Customer name';
+    var phone=gv('custPhone'), addr=gv('custAddress');
+    var pkg=gv('pkgName')||'Umrah Package';
+    var no=(g('invNo')&&g('invNo').value)||'';
+    var iss=(g('invIssue')&&g('invIssue').value)||'';
+    var due=(g('invDue')&&g('invDue').value)||'';
+    var deposit=parseFloat((g('invDeposit')&&g('invDeposit').value))||0;
+    var discount=parseFloat((g('invDiscount')&&g('invDiscount').value))||0;
+    var items=invItems();
+    var sub=0; items.forEach(function(it){ sub+=it.qty*it.unit; });
+    var total=Math.max(0, sub-discount);
+    var bal=total-deposit;
+
+    var rows=items.map(function(it){
+      return '<tr>'
+        +'<td style="padding:11px 0;border-bottom:1px dashed #dcdcdc;vertical-align:top;width:56%">'
+          +'<span style="display:inline-block;background:#f6efdd;color:#a5842f;font-size:8.5px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:3px;text-transform:uppercase">'+it.tag+'</span>'
+          +'<div style="font-size:10.5px;color:#555;margin-top:6px;line-height:1.55">'+it.desc+'</div>'
+        +'</td>'
+        +'<td style="padding:11px 0;border-bottom:1px dashed #dcdcdc;text-align:right;font-family:Georgia,serif;font-size:14px;color:#1a1a1a;vertical-align:top;width:9%">'+it.qty+'</td>'
+        +'<td style="padding:11px 0;border-bottom:1px dashed #dcdcdc;text-align:right;font-family:Georgia,serif;font-size:12px;color:#1a1a1a;vertical-align:top;width:16%">'+m2(it.unit)+'</td>'
+        +'<td style="padding:11px 0;border-bottom:1px dashed #dcdcdc;text-align:right;font-family:Georgia,serif;font-size:13px;color:#c9a24a;font-weight:700;vertical-align:top;width:19%">'+m2(it.qty*it.unit)+'</td>'
+      +'</tr>';
+    }).join('') || '<tr><td colspan="4" style="padding:16px;color:#999;font-style:italic">Add room types or children in the pricing form to populate line items.</td></tr>';
+
+    var cd=[]; if(phone)cd.push(phone); if(addr)cd.push(addr);
+
+    var depRow = deposit>0 ? '<div style="display:flex;justify-content:space-between;padding:7px 0;font-size:12px;color:#444;border-bottom:1px solid #eee"><span>Deposit Paid</span><span style="font-family:Georgia,serif;color:#3a9d5d;font-weight:700">&minus;'+m2(deposit)+'</span></div>' : '';
+    var discRow = discount>0 ? '<div style="display:flex;justify-content:space-between;padding:7px 0;font-size:12px;color:#444;border-bottom:1px solid #eee"><span>Discount</span><span style="font-family:Georgia,serif;color:#b0392b">&minus;'+m2(discount)+'</span></div>' : '';
+    var dueLabel = deposit>0 ? 'BALANCE DUE' : 'AMOUNT DUE';
+    var dueDateLine = due ? '<div style="font-size:9.5px;color:#b0392b;font-weight:700;margin-top:3px">Due by '+fmtD(due)+'</div>' : '';
+
+    var notesHtml = INV_NOTES.split("\n").map(function(l){
+      var mm=l.match(/^(\d+)\.\s*(.*)$/);
+      if(mm) return '<div style="display:flex;gap:8px;padding:2px 0;font-size:9.5px;color:#666;line-height:1.5"><span style="color:#c9a24a;font-weight:700;min-width:12px">'+mm[1]+'</span><span>'+mm[2]+'</span></div>';
+      return '<div style="font-size:9.5px;color:#666">'+l+'</div>';
+    }).join('');
+
+    return ''
+    +'<div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.15)">'
+    +'<div style="padding:36px 44px 26px;font-family:\'Helvetica Neue\',Arial,sans-serif;color:#2b2b2b">'
+      +'<div style="display:flex;justify-content:space-between;align-items:flex-start">'
+        +'<div style="width:92px"><img src="'+LOGO+'" style="width:100%;display:block"></div>'
+        +'<div style="text-align:right">'
+          +'<div style="font-family:Georgia,serif;font-size:36px;color:#1a1a1a;line-height:1">Invoice</div>'
+          +'<div style="font-size:9px;letter-spacing:5px;color:#c9a24a;margin-top:3px">INVOICE</div>'
+          +'<div style="font-size:8px;letter-spacing:2px;color:#9a9a9a;margin-top:13px">ISSUE DATE</div>'
+          +'<div style="font-family:Georgia,serif;font-size:13px;color:#1a1a1a">'+(fmtD(iss)||'—')+'</div>'
+          +'<div style="font-size:8px;letter-spacing:2px;color:#9a9a9a;margin-top:9px">INVOICE NO.</div>'
+          +'<div style="font-family:Georgia,serif;font-size:13px;color:#c9a24a">'+(no||'—')+'</div>'
+        +'</div>'
+      +'</div>'
+      +'<div style="height:2px;background:#1a1a1a;margin-top:16px"></div><div style="height:2px;background:#c9a24a"></div>'
+      +'<div style="display:flex;justify-content:space-between;margin-top:20px">'
+        +'<div>'
+          +'<div style="font-size:8.5px;letter-spacing:2px;color:#c9a24a">PREPARED FOR</div>'
+          +'<div style="font-family:Georgia,serif;font-size:20px;color:#1a1a1a;margin-top:3px">'+name+'</div>'
+          +'<div style="font-size:11px;color:#555;margin-top:2px">'+cd.join('<br>')+'</div>'
+        +'</div>'
+        +'<div style="border-left:1px solid #e5e5e5;padding-left:22px;min-width:230px">'
+          +'<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dotted #ddd"><span style="color:#777;font-size:11px">Invoice date</span><span style="font-family:Georgia,serif;font-weight:700;font-size:12px">'+(fmtD(iss)||'—')+'</span></div>'
+          +'<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dotted #ddd"><span style="color:#777;font-size:11px">Invoice no.</span><span style="font-family:Georgia,serif;font-weight:700;font-size:12px;color:#c9a24a">'+(no||'—')+'</span></div>'
+          +'<div style="display:flex;justify-content:space-between;padding:5px 0"><span style="color:#777;font-size:11px">Package</span><span style="font-family:Georgia,serif;font-weight:700;font-size:12px">'+pkg+'</span></div>'
+        +'</div>'
+      +'</div>'
+      +'<table style="width:100%;border-collapse:collapse;margin-top:22px">'
+        +'<thead><tr>'
+          +'<th style="font-size:8.5px;letter-spacing:1.5px;color:#9a9a9a;text-align:left;padding:0 0 8px;border-bottom:1px solid #1a1a1a">DESCRIPTION</th>'
+          +'<th style="font-size:8.5px;letter-spacing:1.5px;color:#9a9a9a;text-align:right;padding:0 0 8px;border-bottom:1px solid #1a1a1a">QTY</th>'
+          +'<th style="font-size:8.5px;letter-spacing:1.5px;color:#9a9a9a;text-align:right;padding:0 0 8px;border-bottom:1px solid #1a1a1a">UNIT PRICE</th>'
+          +'<th style="font-size:8.5px;letter-spacing:1.5px;color:#9a9a9a;text-align:right;padding:0 0 8px;border-bottom:1px solid #1a1a1a">AMOUNT</th>'
+        +'</tr></thead><tbody>'+rows+'</tbody></table>'
+      +'<div style="display:flex;justify-content:space-between;margin-top:22px;gap:30px">'
+        +'<div style="flex:1;border:1px solid #e8e2d2;border-radius:6px;overflow:hidden;align-self:flex-start">'
+          +'<div style="background:#1a1a1a;color:#fff;font-size:9.5px;letter-spacing:2px;padding:8px 13px">PAYMENT OPTIONS</div>'
+          +'<div style="padding:11px 14px">'
+            +'<div style="font-size:8.5px;letter-spacing:1px;color:#c9a24a;font-weight:700;margin-bottom:4px">ZELLE — BUSINESS ACCOUNT</div>'
+            +'<div style="display:flex;justify-content:space-between;font-size:10.5px;padding:2px 0"><span style="color:#666">Amana Travel Inc.</span><span style="font-weight:700;color:#1a1a1a">mohamm235@gmail.com</span></div>'
+            +'<div style="font-size:8.5px;letter-spacing:1px;color:#c9a24a;font-weight:700;margin:10px 0 4px">CHASE BANK — WIRE / DEPOSIT</div>'
+            +'<div style="display:flex;justify-content:space-between;font-size:10.5px;padding:2px 0"><span style="color:#666">Account #</span><span style="font-weight:700;color:#1a1a1a">672159107</span></div>'
+            +'<div style="display:flex;justify-content:space-between;font-size:10.5px;padding:2px 0"><span style="color:#666">Routing #</span><span style="font-weight:700;color:#1a1a1a">021000021</span></div>'
+            +'<div style="display:flex;justify-content:space-between;font-size:10.5px;padding:2px 0"><span style="color:#666">On file</span><span style="font-weight:700;color:#1a1a1a">Amana Travel Inc.</span></div>'
+          +'</div>'
+        +'</div>'
+        +'<div style="width:290px">'
+          +'<div style="display:flex;justify-content:space-between;padding:7px 0;font-size:12px;color:#444;border-bottom:1px solid #eee"><span>Subtotal</span><span style="font-family:Georgia,serif">'+m2(sub)+'</span></div>'
+          +discRow
+          +'<div style="display:flex;justify-content:space-between;padding:7px 0;font-family:Georgia,serif;font-size:15px;color:#1a1a1a;font-weight:700;border-bottom:2px solid #1a1a1a"><span>Total</span><span>'+m2(total)+'</span></div>'
+          +depRow
+          +'<div style="display:flex;justify-content:space-between;align-items:center;background:#faf6ec;border:1px solid #e8dcb8;border-radius:6px;padding:12px 16px;margin-top:12px">'
+            +'<div><span style="font-size:9.5px;letter-spacing:1.5px;color:#a5842f;font-weight:700">'+dueLabel+'</span>'+dueDateLine+'</div>'
+            +'<span style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#1a1a1a">'+m0(bal)+'</span>'
+          +'</div>'
+        +'</div>'
+      +'</div>'
+      +'<div style="margin-top:22px"><h3 style="font-family:Georgia,serif;font-size:14px;color:#1a1a1a;margin-bottom:6px">Important Notes</h3>'+notesHtml+'</div>'
+      +'<div style="text-align:center;margin-top:22px;padding-top:12px;border-top:1px solid #eee">'
+        +'<div style="font-size:9px;color:#888">Amana Travel Inc. · 507 68th St, Brooklyn, NY 11220 · 718-491-6456 · www.amanatravel.com</div>'
+        +'<div style="font-family:Georgia,serif;font-style:italic;color:#c9a24a;font-size:11px;margin-top:4px">Thank you for choosing Amana Travel</div>'
+      +'</div>'
+    +'</div></div>';
+  };
+
+  window.renderInvoiceDoc=function(){ var el=g('invoiceContent'); if(el) el.innerHTML=window.buildInvoiceHTML(); };
+
+  window.printInvoice=function(){
+    recalc();
+    var yr=(gv('madArrival')||'').slice(0,4); if(!/^\d{4}$/.test(yr)) yr=String(new Date().getFullYear());
+    if(g('invIssue') && !g('invIssue').value) g('invIssue').value=new Date().toISOString().slice(0,10);
+    if(g('invNo') && !g('invNo').value) g('invNo').value=invPeek(yr);
+    renderInvoiceDoc();
+    showOverlay('invoiceOverlay');
+  };
+
+  window.printInvoiceDo=function(){
+    var mm=/(\d+)\s*$/.exec((g('invNo')&&g('invNo').value)||'');
+    if(mm){ try{ localStorage.setItem('amana_inv_counter', String(parseInt(mm[1],10))); }catch(e){} }
+    printOverlay('invoiceOverlay');
+  };
+})();
+</script>
+
+
+<script>
+(function(){
+  var SKEY='amana_trips_v1';
+  function idx(){ try{return JSON.parse(localStorage.getItem(SKEY)||'{}');}catch(e){return {};} }
+  function putIdx(o){ try{localStorage.setItem(SKEY,JSON.stringify(o));return true;}catch(e){return false;} }
+
+  function collectState(){
+    var st={inputs:{}, groups:groups, kids:kids, trains:trains, SAR:(typeof SAR!=='undefined'?SAR:3.70)};
+    document.querySelectorAll('.left input, .left select, .left textarea').forEach(function(el){ if(el.id) st.inputs[el.id]=el.value; });
+    ['invNo','invIssue','invDue','invDeposit','invDiscount','numMargin','slMargin'].forEach(function(id){ var el=g(id); if(el) st.inputs[id]=el.value; });
+    return JSON.parse(JSON.stringify(st));
+  }
+  function applyState(st){
+    Object.keys(st.inputs||{}).forEach(function(id){ var el=g(id); if(el) el.value=st.inputs[id]; });
+    groups.length=0; (st.groups||[]).forEach(function(x){ groups.push(x); });
+    kids.length=0;   (st.kids||[]).forEach(function(x){ kids.push(x); });
+    trains.length=0; (st.trains||[]).forEach(function(x){ trains.push(x); });
+    if(st.SAR){ try{ window.SAR=st.SAR; }catch(e){} var rd=g('rateDisplay'); if(rd) rd.textContent='1 USD = '+Number(st.SAR).toFixed(2)+' SAR'; }
+    var sv=g('slVal'); if(sv) sv.textContent=(gv('numMargin')||'20')+'%';
+    if(typeof renderGroups==='function') renderGroups();
+    if(typeof renderChildren==='function') renderChildren();
+    if(typeof renderTrains==='function') renderTrains();
+    if(typeof recalc==='function') recalc();
+  }
+
+  window.refreshSaved=function(){
+    var o=idx(), sel=g('savedSelect'); if(!sel) return;
+    var names=Object.keys(o).sort();
+    sel.innerHTML = names.length ? names.map(function(n){ return '<option value="'+n.replace(/"/g,'&quot;')+'">'+n.replace(/</g,'&lt;')+'</option>'; }).join('') : '<option value="">— no saved trips —</option>';
+  };
+  window.saveTrip=function(){
+    var name=(gv('saveName')||gv('pkgName')||gv('custName')||'').trim();
+    if(!name){ var t=prompt('Name this trip / client:'); if(!t) return; name=t.trim(); var sn=g('saveName'); if(sn) sn.value=name; }
+    var o=idx(); o[name]=collectState(); o[name]._saved=new Date().toISOString();
+    var ok=putIdx(o); refreshSaved(); var sel=g('savedSelect'); if(sel) sel.value=name;
+    var h=g('savedHint'); if(h) h.textContent = ok ? ('Saved “'+name+'” · '+new Date().toLocaleString()) : 'Could not save (browser storage blocked).';
+  };
+  window.loadTrip=function(){
+    var sel=g('savedSelect'); var name=sel&&sel.value; if(!name) return;
+    var o=idx(); if(!o[name]) return; applyState(o[name]);
+    var sn=g('saveName'); if(sn) sn.value=name;
+    var h=g('savedHint'); if(h) h.textContent='Loaded “'+name+'” — edit and re-generate the offer or invoice.';
+  };
+  window.deleteTrip=function(){
+    var sel=g('savedSelect'); var name=sel&&sel.value; if(!name) return;
+    if(!confirm('Delete “'+name+'”? This cannot be undone.')) return;
+    var o=idx(); delete o[name]; putIdx(o); refreshSaved();
+    var h=g('savedHint'); if(h) h.textContent='Deleted “'+name+'”.';
+  };
+
+  if(document.readyState!=='loading') refreshSaved();
+  else document.addEventListener('DOMContentLoaded', refreshSaved);
+})();
+</script>
+
+
+<script>
+(function(){
+  var CID_KEY='amana_gdrive_client_id';
+  var SCOPE='https://www.googleapis.com/auth/drive.appdata';
+  var FNAME='amana_trips.json';
+  var LKEY='amana_trips_v1';
+  var tokenClient=null, accessToken=null;
+
+  function gg(id){ return document.getElementById(id); }
+  function cid(){ return (gg('gdriveCid')&&gg('gdriveCid').value.trim())||''; }
+  function status(m){ var e=gg('gdriveStatus'); if(e) e.textContent=m; }
+
+  function ensure(cb){
+    var id=cid();
+    if(!id){ status('Paste your Google OAuth Client ID first.'); return; }
+    try{ localStorage.setItem(CID_KEY,id); }catch(e){}
+    if(!(window.google&&google.accounts&&google.accounts.oauth2)){ status('Google sign-in library still loading — wait a moment and retry.'); return; }
+    if(!tokenClient || tokenClient._cid!==id){
+      tokenClient=google.accounts.oauth2.initTokenClient({
+        client_id:id, scope:SCOPE,
+        callback:function(resp){
+          if(resp&&resp.access_token){ accessToken=resp.access_token; status('Connected to Google Drive.'); if(ensure._cb){var f=ensure._cb;ensure._cb=null;f();} }
+          else { status('Authorization was cancelled or failed.'); ensure._cb=null; }
+        }
+      });
+      tokenClient._cid=id;
+    }
+    if(accessToken){ if(cb)cb(); }
+    else { ensure._cb=cb||null; tokenClient.requestAccessToken({prompt:''}); }
+  }
+
+  function findFile(cb){
+    fetch('https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=files(id,name)&q='+encodeURIComponent("name='"+FNAME+"'"),
+      {headers:{Authorization:'Bearer '+accessToken}})
+      .then(function(r){return r.json();})
+      .then(function(d){ cb((d.files&&d.files.length)?d.files[0].id:null); })
+      .catch(function(){ cb(null); });
+  }
+
+  window.driveConnect=function(){ ensure(function(){ status('Connected. You can now Save to / Load from Drive.'); }); };
+
+  window.driveSave=function(){
+    ensure(function(){
+      var data=''; try{ data=localStorage.getItem(LKEY)||'{}'; }catch(e){ data='{}'; }
+      status('Saving to Google Drive…');
+      findFile(function(fileId){
+        var boundary='amana_'+Date.now();
+        var meta=fileId?{name:FNAME}:{name:FNAME,parents:['appDataFolder']};
+        var body='--'+boundary+'\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'+JSON.stringify(meta)+
+                 '\r\n--'+boundary+'\r\nContent-Type: application/json\r\n\r\n'+data+'\r\n--'+boundary+'--';
+        var url=fileId?('https://www.googleapis.com/upload/drive/v3/files/'+fileId+'?uploadType=multipart')
+                      :('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart');
+        fetch(url,{method:fileId?'PATCH':'POST',
+          headers:{Authorization:'Bearer '+accessToken,'Content-Type':'multipart/related; boundary='+boundary},
+          body:body})
+          .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+          .then(function(){ var n=0; try{n=Object.keys(JSON.parse(data)).length;}catch(e){} status('Saved '+n+' trip(s) to Google Drive · '+new Date().toLocaleString()); })
+          .catch(function(){ status('Save to Drive failed — check the Client ID and that this site’s origin is authorized.'); });
+      });
+    });
+  };
+
+  window.driveLoad=function(){
+    ensure(function(){
+      status('Loading from Google Drive…');
+      findFile(function(fileId){
+        if(!fileId){ status('No Drive backup found yet — press “Save to Drive” first.'); return; }
+        fetch('https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media',{headers:{Authorization:'Bearer '+accessToken}})
+          .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+          .then(function(remote){
+            var local={}; try{ local=JSON.parse(localStorage.getItem(LKEY)||'{}'); }catch(e){}
+            var keys=Object.keys(remote||{}); keys.forEach(function(k){ local[k]=remote[k]; });
+            try{ localStorage.setItem(LKEY,JSON.stringify(local)); }catch(e){}
+            if(typeof refreshSaved==='function') refreshSaved();
+            status('Loaded '+keys.length+' trip(s) from Google Drive. Pick one in the list and press Load.');
+          })
+          .catch(function(){ status('Load from Drive failed — try Connect again.'); });
+      });
+    });
+  };
+
+  // prefill saved Client ID
+  function initCid(){ try{ var v=localStorage.getItem(CID_KEY); if(v&&gg('gdriveCid')) gg('gdriveCid').value=v; }catch(e){} }
+  if(document.readyState!=='loading') initCid(); else document.addEventListener('DOMContentLoaded', initCid);
+})();
+</script>
+
+
+<script>
+(function(){
+  var LKEY='amana_trips_v1';
+  window.exportBackup=function(){
+    var data='{}'; try{ data=localStorage.getItem(LKEY)||'{}'; }catch(e){}
+    var blob=new Blob([data],{type:'application/json'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    var d=new Date(), st=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0');
+    a.download='Amana_Trips_'+st+'.json'; document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },600);
+    var h=document.getElementById('savedHint'); if(h) h.textContent='Backup exported — save it to your Google Drive, then Import on any device.';
+  };
+  window.importBackup=function(input){
+    var f=input.files&&input.files[0]; if(!f) return;
+    var r=new FileReader();
+    r.onload=function(){
+      try{
+        var remote=JSON.parse(r.result); if(typeof remote!=='object'||!remote) throw 0;
+        var local={}; try{ local=JSON.parse(localStorage.getItem(LKEY)||'{}'); }catch(e){}
+        var keys=Object.keys(remote); keys.forEach(function(k){ local[k]=remote[k]; });
+        try{ localStorage.setItem(LKEY, JSON.stringify(local)); }catch(e){}
+        if(typeof refreshSaved==='function') refreshSaved();
+        alert('Imported '+keys.length+' trip(s) from backup.');
+      }catch(e){ alert('That file is not a valid Amana backup.'); }
+      input.value='';
+    };
+    r.readAsText(f);
+  };
+})();
+</script>
+
+</body>
+</html>
