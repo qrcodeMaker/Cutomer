@@ -243,6 +243,14 @@ tr.profrow td{background:#c9991a;color:#1a1612;font-weight:700}
           </div>
         </div>
       </div>
+      <div style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:6px;padding:.75rem .85rem">
+        <label style="font-weight:700;color:var(--brown)">First City to Visit / Offer Display Order</label>
+        <select id="firstCity" onchange="recalc()" style="font-weight:600">
+          <option value="mad" selected>Madinah First → Makkah</option>
+          <option value="mak">Makkah First → Madinah</option>
+        </select>
+        <div style="font-size:.65rem;color:var(--muted);margin-top:.4rem">Controls the order of hotels and programs in the Customer Offer and Marketing Flyer. Enter the actual dates for each city below.</div>
+      </div>
       <div class="g2">
         <div>
           <label>Madinah Arrival Date</label>
@@ -327,7 +335,8 @@ tr.profrow td{background:#c9991a;color:#1a1612;font-weight:700}
       <div style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:6px;padding:.7rem .85rem;margin-bottom:.25rem">
         <label style="font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;display:block">&#127769; Madinah Hotel Name</label>
         <input type="text" id="madHotelName" placeholder="e.g. Pullman Zamzam Madinah" oninput="recalc()" style="background:#fff;font-size:.85rem;font-weight:500">
-      </div>
+              <div style="margin-top:.6rem"><label>Madinah Hotel Category</label><select id="madStars" onchange="recalc()"><option value="3">3 Stars ★★★</option><option value="4">4 Stars ★★★★</option><option value="5" selected>5 Stars ★★★★★</option></select></div>
+</div>
       <div style="font-size:.65rem;color:#5c4a35;background:var(--gold-pale);border:1px solid var(--gold-light);border-radius:4px;padding:.5rem .75rem;line-height:1.8">
         💡 Enter the <strong>total room cost per night</strong> — what the hotel charges for the <em>whole room</em>, shared by all persons inside.<br>
         <strong>Cost per person = Total Room Cost/Night × Nights ÷ Persons sharing</strong>
@@ -366,7 +375,8 @@ tr.profrow td{background:#c9991a;color:#1a1612;font-weight:700}
       <div style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:6px;padding:.7rem .85rem;margin-bottom:.25rem">
         <label style="font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;display:block">&#128332; Makkah Hotel Name</label>
         <input type="text" id="makHotelName" placeholder="e.g. Swissotel Al Maqam Makkah" oninput="recalc()" style="background:#fff;font-size:.85rem;font-weight:500">
-      </div>
+              <div style="margin-top:.6rem"><label>Makkah Hotel Category</label><select id="makStars" onchange="recalc()"><option value="3">3 Stars ★★★</option><option value="4">4 Stars ★★★★</option><option value="5" selected>5 Stars ★★★★★</option></select></div>
+</div>
       <div style="font-size:.65rem;color:#5c4a35;background:var(--gold-pale);border:1px solid var(--gold-light);border-radius:4px;padding:.5rem .75rem;line-height:1.8">
         💡 Enter the <strong>total room cost per night</strong> — what the hotel charges for the <em>whole room</em>, shared by all persons inside.<br>
         <strong>Cost per person = Total Room Cost/Night × Nights ÷ Persons sharing</strong>
@@ -426,12 +436,6 @@ tr.profrow td{background:#c9991a;color:#1a1612;font-weight:700}
     <div class="card-body">
       <div style="font-size:.68rem;color:var(--muted);margin-bottom:.1rem">For the printable promo flyer. Prices (Quad/Triple/Double), hotels &amp; nights pull in automatically — these just fine-tune it.</div>
       <div class="g2">
-        <div><label>Star Rating</label>
-          <select id="flyStars">
-            <option value="5" selected>5 Star</option>
-            <option value="4">4 Star</option>
-            <option value="3">3 Star</option>
-          </select></div>
         <div><label>Date Range <span>blank = auto</span></label><input type="text" id="flyDateRange" placeholder="e.g. 8 Mar – 24 Mar"></div>
       </div>
       <div><label>Tagline <span>optional</span></label><input type="text" id="flyTagline" placeholder="e.g. The last ten days of Ramadan"></div>
@@ -923,16 +927,17 @@ function flyerPrice(type){ var c=costForType(type); return c.salePP>0 ? r5(c.sal
 function buildFlyerHTML(){
   var pkg     = gv('pkgName')||'Umrah Package';
   var tagline = (gv('flyTagline')||'').trim();
-  var stars   = gi('flyStars')||5;
+  var madStars = gi('madStars')||5, makStars = gi('makStars')||5;
+  var firstCity = gv('firstCity')||'mad';
   var madHotel= gv('madHotelName')||'Madinah Hotel';
   var makHotel= gv('makHotelName')||'Makkah Hotel';
   var madN=gi('madN'), makN=gi('makN'), othN=gi('otherN'), othCity=(gv('otherCity')||'').trim();
   var totalN = madN+makN+othN;
   var dr=(gv('flyDateRange')||'').trim();
-  if(!dr){ var a=(gv('madArrival')||'').trim(), b=(gv('makDeparture')||'').trim(); dr=(a&&b)?a+' &ndash; '+b:(a||b||''); }
+  if(!dr){ var a=(gv(firstCity==='mak'?'makArrival':'madArrival')||'').trim(), b=(gv(firstCity==='mak'?'madDeparture':'makDeparture')||'').trim(); dr=(a&&b)?escAttr(a)+' &ndash; '+escAttr(b):(escAttr(a)||escAttr(b)||''); }
   var quad=flyerPrice('Quad'), tpl=flyerPrice('Triple'), dbl=flyerPrice('Double');
   var pv=function(v){ return v>0?'$'+f(v):'&mdash;'; };
-  var starStr=''; for(var i=0;i<stars;i++) starStr+='&#9733;';
+  var starLabel=madStars===makStars ? madStars+'-Star Hotels' : '3–5 Star Hotels';
 
   var priceCol=function(label,val,accent){
     return '<div style="flex:1;text-align:center;padding:14px 8px;'+(accent?'background:linear-gradient(180deg,#fbf6ec,#f3e7cf);':'background:#fff;')+'border-radius:10px;border:2px solid '+(accent?'#c9991a':'#e3d8c6')+'">'
@@ -944,13 +949,13 @@ function buildFlyerHTML(){
   var incl=function(icon,txt){
     return '<div style="display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#1a1612"><span style="font-size:17px">'+icon+'</span>'+txt+'</div>';
   };
-  var hotelBox=function(emoji,city,name,n){
+  var hotelBox=function(emoji,city,name,n,stars){
     return '<div style="flex:1;background:#fff;border:1.5px solid #e3d8c6;border-radius:10px;padding:11px 13px">'
       +'<div style="display:flex;align-items:center;gap:7px;margin-bottom:3px"><span style="font-size:16px">'+emoji+'</span>'
         +'<span style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c9991a">'+city+'</span>'
         +'<span style="font-size:10px;color:#7a6a55;margin-left:auto">'+n+' Night'+(n!==1?'s':'')+'</span></div>'
       +'<div style="font-size:14px;font-weight:700;color:#1a1612">'+escAttr(name)+'</div>'
-      +'<div style="font-size:10px;color:#7a6a55;margin-top:2px">&#9733; '+stars+'-Star Hotel &middot; Daily breakfast</div>'
+      +'<div style="font-size:10px;color:#7a6a55;margin-top:2px">'+('★'.repeat(stars))+' '+stars+'-Star Hotel &middot; Daily breakfast</div>'
     +'</div>';
   };
 
@@ -964,8 +969,8 @@ function buildFlyerHTML(){
           +'<div style="font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:#e0c068;margin-top:2px">Hajj &amp; Umrah Travel</div></div>'
       +'</div>'
       +'<div style="text-align:center;background:#c9991a;border-radius:10px;padding:7px 14px">'
-        +'<div style="font-size:13px;color:#1a1612;letter-spacing:.05em">'+starStr+'</div>'
-        +'<div style="font-size:11px;font-weight:800;color:#1a1612;letter-spacing:.06em;text-transform:uppercase">'+stars+' Star Hotel</div>'
+        +'<div style="font-size:13px;color:#1a1612;letter-spacing:.05em">★</div>'
+        +'<div style="font-size:11px;font-weight:800;color:#1a1612;letter-spacing:.06em;text-transform:uppercase">'+(madStars===makStars ? starLabel : 'Hotel Categories Vary')+'</div>'
       +'</div>'
     +'</div>'
 
@@ -985,8 +990,7 @@ function buildFlyerHTML(){
 
     // ── hotels ──
     +'<div style="padding:18px 24px 6px;display:flex;gap:12px">'
-      +hotelBox('&#127769;','Madinah',madHotel,madN)
-      +hotelBox('&#128332;','Makkah',makHotel,makN)
+      +(firstCity==='mak' ? hotelBox('&#128332;','Makkah',makHotel,makN,makStars)+hotelBox('&#127769;','Madinah',madHotel,madN,madStars) : hotelBox('&#127769;','Madinah',madHotel,madN,madStars)+hotelBox('&#128332;','Makkah',makHotel,makN,makStars))
     +'</div>'
     +(othCity&&othN>0?'<div style="padding:0 24px 4px"><div style="background:#fff;border:1.5px dashed #c9991a;border-radius:10px;padding:8px 13px;font-size:13px;font-weight:600;color:#1a1612">&#128205; '+othN+' Night'+(othN!==1?'s':'')+' in '+escAttr(othCity)+'</div></div>':'')
 
@@ -1033,6 +1037,8 @@ function buildOfferHTML(){
   var makN       = gv('makN');
   var madHotel   = gv('madHotelName');
   var makHotel   = gv('makHotelName');
+  var madStars   = gi('madStars')||5, makStars = gi('makStars')||5;
+  var firstCity  = gv('firstCity')||'mad';
   var madArr     = gv('madArrival');
   var madArrTime = gv('madArrivalTime');
   var madDep     = gv('madDeparture');
@@ -1074,8 +1080,8 @@ function buildOfferHTML(){
   var madArrLine = madMode==='train' ? 'Arrival at Madinah Train Station'
                  : madMode==='bus'   ? 'Arrival in Madinah by Bus'
                  :                      'Arrival at Madinah International Airport';
-  var madProg = [madArrLine,'Meet &amp; Assist','Transfer to hotel (air-conditioned)','Check-in upon arrival','Daily Breakfast','Mazarat Tour','Transportation to Makkah via Speed Train','Free Ihram &amp; gifts','Guidance'];
-  var makProg = ['Arrival at Makkah by Speed Train','Transfer to hotel','Daily Breakfast','Mazarat Tour','Umrah Performance','Free Zamzam &amp; gifts','Guidance','Transfer to airport'];
+  var madProg = [madArrLine,'Meet &amp; Assist','Transfer to hotel (air-conditioned)','Check-in upon arrival','Daily Breakfast','Mazarat Tour',(firstCity==='mad'?'Transportation to Makkah via Speed Train':'Transportation to departure point'),'Free Ihram &amp; gifts','Guidance'];
+  var makProg = [firstCity==='mak'?'Arrival in Makkah':'Arrival at Makkah by Speed Train','Transfer to hotel','Daily Breakfast','Mazarat Tour','Umrah Performance','Free Zamzam &amp; gifts','Guidance',firstCity==='mak'?'Transportation to Madinah':'Transfer to airport'];
 
   // Extra-city itinerary (Istanbul / Cairo / etc.) — free text, one item per line
   var otherCityName = gv('otherCity')||'Extra City';
@@ -1098,7 +1104,7 @@ function buildOfferHTML(){
     makN>0     ? makN+' nights in Makkah'+(makHotel?' &mdash; '+makHotel:'') : null,
     'Daily breakfast at both hotels',
     bus>0      ? 'All ground transportation' : null,
-    train>0    ? 'Madinah &rarr; Makkah Speed Train' : null,
+    train>0    ? (firstCity==='mak'?'Makkah &rarr; Madinah Speed Train':'Madinah &rarr; Makkah Speed Train') : null,
     visa>0     ? 'Saudi entry visa' : null,
     'Mazarat (Ziyarat) tours in Madinah &amp; Makkah',
     'Umrah performance guidance',
@@ -1273,20 +1279,7 @@ function buildOfferHTML(){
     // HOTELS
     +sectionTitle('&#127970;','Accommodation')
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px">'
-      +(madN>0?'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
-        +'<div style="background:#1a1612;padding:6px 10px;display:flex;align-items:center;gap:6px">'
-          +'<span style="font-size:18px">&#127769;</span>'
-          +'<div><div style="font-size:10px;color:#f0d080;letter-spacing:.1em;text-transform:uppercase">Madinah</div>'
-          +'<div style="font-size:12px;font-weight:600;color:#fff">'+madN+' Nights</div></div>'
-        +'</div>'
-        +'<div style="padding:6px 10px;background:#fdf9f4">'
-          +(madHotel?'<div style="font-size:13px;font-weight:700;color:#1a1612;margin-bottom:4px">'+madHotel+'</div>':'')
-          +'<div style="font-size:11px;color:#333">&#11088; 5-Star Hotel</div>'
-          +'<div style="font-size:11px;color:#333;margin-top:2px">&#127963; Near Prophet&#39;s Mosque</div>'
-          +'<div style="font-size:11px;color:#333;margin-top:2px">&#9749; Daily breakfast included</div>'
-        +'</div>'
-      +'</div>':'')
-      +(makN>0?'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+      +(firstCity==='mak' ? ((makN>0?'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
         +'<div style="background:#1a1612;padding:6px 10px;display:flex;align-items:center;gap:6px">'
           +'<span style="font-size:18px">&#128332;</span>'
           +'<div><div style="font-size:10px;color:#f0d080;letter-spacing:.1em;text-transform:uppercase">Makkah</div>'
@@ -1294,30 +1287,77 @@ function buildOfferHTML(){
         +'</div>'
         +'<div style="padding:6px 10px;background:#fdf9f4">'
           +(makHotel?'<div style="font-size:13px;font-weight:700;color:#1a1612;margin-bottom:4px">'+makHotel+'</div>':'')
-          +'<div style="font-size:11px;color:#333">&#11088; 5-Star Hotel</div>'
+          +'<div style="font-size:11px;color:#333">'+('★'.repeat(makStars))+' '+makStars+'-Star Hotel</div>'
           +'<div style="font-size:11px;color:#333;margin-top:2px">&#127963; Al Haram Courtyard</div>'
           +'<div style="font-size:11px;color:#333;margin-top:2px">&#9749; Daily breakfast included</div>'
         +'</div>'
-      +'</div>':'')
+      +'</div>':'')) + ((madN>0?'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:#1a1612;padding:6px 10px;display:flex;align-items:center;gap:6px">'
+          +'<span style="font-size:18px">&#127769;</span>'
+          +'<div><div style="font-size:10px;color:#f0d080;letter-spacing:.1em;text-transform:uppercase">Madinah</div>'
+          +'<div style="font-size:12px;font-weight:600;color:#fff">'+madN+' Nights</div></div>'
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'
+          +(madHotel?'<div style="font-size:13px;font-weight:700;color:#1a1612;margin-bottom:4px">'+madHotel+'</div>':'')
+          +'<div style="font-size:11px;color:#333">'+('★'.repeat(madStars))+' '+madStars+'-Star Hotel</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#127963; Near Prophet&#39;s Mosque</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#9749; Daily breakfast included</div>'
+        +'</div>'
+      +'</div>':'')) : ((madN>0?'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:#1a1612;padding:6px 10px;display:flex;align-items:center;gap:6px">'
+          +'<span style="font-size:18px">&#127769;</span>'
+          +'<div><div style="font-size:10px;color:#f0d080;letter-spacing:.1em;text-transform:uppercase">Madinah</div>'
+          +'<div style="font-size:12px;font-weight:600;color:#fff">'+madN+' Nights</div></div>'
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'
+          +(madHotel?'<div style="font-size:13px;font-weight:700;color:#1a1612;margin-bottom:4px">'+madHotel+'</div>':'')
+          +'<div style="font-size:11px;color:#333">'+('★'.repeat(madStars))+' '+madStars+'-Star Hotel</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#127963; Near Prophet&#39;s Mosque</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#9749; Daily breakfast included</div>'
+        +'</div>'
+      +'</div>':'')) + ((makN>0?'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:#1a1612;padding:6px 10px;display:flex;align-items:center;gap:6px">'
+          +'<span style="font-size:18px">&#128332;</span>'
+          +'<div><div style="font-size:10px;color:#f0d080;letter-spacing:.1em;text-transform:uppercase">Makkah</div>'
+          +'<div style="font-size:12px;font-weight:600;color:#fff">'+makN+' Nights</div></div>'
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'
+          +(makHotel?'<div style="font-size:13px;font-weight:700;color:#1a1612;margin-bottom:4px">'+makHotel+'</div>':'')
+          +'<div style="font-size:11px;color:#333">'+('★'.repeat(makStars))+' '+makStars+'-Star Hotel</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#127963; Al Haram Courtyard</div>'
+          +'<div style="font-size:11px;color:#333;margin-top:2px">&#9749; Daily breakfast included</div>'
+        +'</div>'
+      +'</div>':'')))
     +'</div>'
 
     // ITINERARY
     +'<div style="page-break-before:auto"></div>'+sectionTitle('&#128506;','Itinerary')
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px">'
-      +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
-        +'<div style="background:linear-gradient(90deg,#1a1612,#2d2419);padding:10px 14px">'
-          +'<div style="font-size:11px;font-weight:700;color:#f0d080;text-transform:uppercase;letter-spacing:.1em">&#127769; Madinah Program</div>'
-          +(madArr?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Arrival: '+madArr+(madArrTime?' &nbsp;&#9200; '+madArrTime:'')+'</div>':'')+(madDep?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Departure: '+madDep+(madDepTime?' &nbsp;&#9200; '+madDepTime:'')+'</div>':'')
-        +'</div>'
-        +'<div style="padding:6px 10px;background:#fdf9f4">'+progList(madProg)+'</div>'
-      +'</div>'
-      +'<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+      +(firstCity==='mak' ? ('<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
         +'<div style="background:linear-gradient(90deg,#1a1612,#2d2419);padding:10px 14px">'
           +'<div style="font-size:11px;font-weight:700;color:#f0d080;text-transform:uppercase;letter-spacing:.1em">&#128332; Makkah Program</div>'
           +(makArr?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Arrival: '+makArr+(makArrTime?' &nbsp;&#9200; '+makArrTime:'')+'</div>':'')+(makDep?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Departure: '+makDep+(makDepTime?' &nbsp;&#9200; '+makDepTime:'')+'</div>':'')
         +'</div>'
         +'<div style="padding:6px 10px;background:#fdf9f4">'+progList(makProg)+'</div>'
-      +'</div>'
+      +'</div>') + ('<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:linear-gradient(90deg,#1a1612,#2d2419);padding:10px 14px">'
+          +'<div style="font-size:11px;font-weight:700;color:#f0d080;text-transform:uppercase;letter-spacing:.1em">&#127769; Madinah Program</div>'
+          +(madArr?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Arrival: '+madArr+(madArrTime?' &nbsp;&#9200; '+madArrTime:'')+'</div>':'')+(madDep?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Departure: '+madDep+(madDepTime?' &nbsp;&#9200; '+madDepTime:'')+'</div>':'')
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'+progList(madProg)+'</div>'
+      +'</div>') : ('<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:linear-gradient(90deg,#1a1612,#2d2419);padding:10px 14px">'
+          +'<div style="font-size:11px;font-weight:700;color:#f0d080;text-transform:uppercase;letter-spacing:.1em">&#127769; Madinah Program</div>'
+          +(madArr?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Arrival: '+madArr+(madArrTime?' &nbsp;&#9200; '+madArrTime:'')+'</div>':'')+(madDep?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Departure: '+madDep+(madDepTime?' &nbsp;&#9200; '+madDepTime:'')+'</div>':'')
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'+progList(madProg)+'</div>'
+      +'</div>') + ('<div style="border:1.5px solid #e8ddd0;border-radius:8px;overflow:hidden">'
+        +'<div style="background:linear-gradient(90deg,#1a1612,#2d2419);padding:10px 14px">'
+          +'<div style="font-size:11px;font-weight:700;color:#f0d080;text-transform:uppercase;letter-spacing:.1em">&#128332; Makkah Program</div>'
+          +(makArr?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Arrival: '+makArr+(makArrTime?' &nbsp;&#9200; '+makArrTime:'')+'</div>':'')+(makDep?'<div style="font-size:10px;color:rgba(255,255,255,.85);margin-top:2px">Departure: '+makDep+(makDepTime?' &nbsp;&#9200; '+makDepTime:'')+'</div>':'')
+        +'</div>'
+        +'<div style="padding:6px 10px;background:#fdf9f4">'+progList(makProg)+'</div>'
+      +'</div>'))
     +'</div>'
 
     // EXTRA CITY ITINERARY (Istanbul / Cairo / etc.)
@@ -1528,7 +1568,9 @@ function buildCostHTML(){
 function copyQuote(){
   if(groups.length===0&&kids.length===0){alert('Nothing to copy.');return;}
   var name=gv('pkgName')||'Package';
-  var txt=name+'\n'+'------------------------------------\n';
+  var madLine='Madinah: '+(gv('madHotelName')||'Hotel')+' ('+gv('madStars')+' stars), '+gv('madN')+' nights';
+  var makLine='Makkah: '+(gv('makHotelName')||'Hotel')+' ('+gv('makStars')+' stars), '+gv('makN')+' nights';
+  var txt=name+'\n'+(gv('firstCity')==='mak'?makLine+'\n'+madLine:madLine+'\n'+makLine)+'\n'+'------------------------------------\n';
   groups.forEach(function(grp){var c=costForType(grp.type);txt+=grp.type+' Room: '+grp.pax+' pax -> $'+f(c.salePP)+'/person ($'+f(c.salePP*grp.pax)+' total)\n';});
   var ckids=childRows().filter(function(ch){return ch.count>0;});
   ckids.forEach(function(ch){txt+=ch.label+': '+ch.count+' -> $'+f(ch.price)+'/child ($'+f(ch.price*ch.count)+' total)\n';});
@@ -1658,7 +1700,9 @@ window.applyMawasimPrices = function(data) {
     var items=[];
     var madN=gv('madN'), makN=gv('makN');
     var madHotel=gv('madHotelName')||'Madinah hotel', makHotel=gv('makHotelName')||'Makkah hotel';
-    var base='<b>'+madN+' Nights Madinah</b> — '+madHotel+'<br><b>'+makN+' Nights Makkah</b> — '+makHotel+'<br>Including Flights · High-Speed Train · Visa · Transfers · Guidance';
+    var madLine='<b>'+madN+' Nights Madinah</b> — '+madHotel+' ('+(gv('madStars')||5)+' Stars)';
+    var makLine='<b>'+makN+' Nights Makkah</b> — '+makHotel+' ('+(gv('makStars')||5)+' Stars)';
+    var base=(gv('firstCity')==='mak'?makLine+'<br>'+madLine:madLine+'<br>'+makLine)+'<br>Including Flights · High-Speed Train · Visa · Transfers · Guidance';
     groups.forEach(function(grp){
       var c=costForType(grp.type); var unit=r5(c.salePP);
       items.push({tag:'Umrah Package · '+grp.type+' Room',
@@ -1810,6 +1854,7 @@ window.applyMawasimPrices = function(data) {
     return JSON.parse(JSON.stringify(st));
   }
   function applyState(st){
+    ['madStars','makStars','firstCity'].forEach(function(id){var el=g(id);if(el)el.value=id==='firstCity'?'mad':'5';});
     Object.keys(st.inputs||{}).forEach(function(id){ var el=g(id); if(el) el.value=st.inputs[id]; });
     groups.length=0; (st.groups||[]).forEach(function(x){ groups.push(x); });
     kids.length=0;   (st.kids||[]).forEach(function(x){ kids.push(x); });
